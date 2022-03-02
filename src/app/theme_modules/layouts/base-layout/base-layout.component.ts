@@ -1,12 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
   NbMenuService,
   NbThemeService,
   NbMediaBreakpointsService,
   NbSidebarService,
-  NbMediaBreakpoint,
 } from '@nebular/theme';
-import { takeWhile, withLatestFrom, delay } from 'rxjs';
+import { takeWhile } from 'rxjs';
 import { StateService } from 'src/app/core/utils/state.service';
 
 @Component({
@@ -17,7 +16,7 @@ import { StateService } from 'src/app/core/utils/state.service';
 export class BaseLayoutComponent implements OnDestroy {
   layout: any = {};
   sidebar: any = {};
-
+  dsaf: any = {};
   private alive = true;
 
   currentTheme: string | undefined;
@@ -41,7 +40,7 @@ export class BaseLayoutComponent implements OnDestroy {
         this.sidebar = sidebar;
       });
 
-    const isBp = this.bpService.getByName('is');
+    // const isBp = this.bpService.getByName('is');
     // this.menuService
     //   .onItemSelect()
     //   .pipe(

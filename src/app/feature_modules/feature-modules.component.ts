@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
-import { LocalStorageUtil } from 'src/app/core/utils/local-storage-util';
 
 @Component({
   selector: 'app-feature-modules',

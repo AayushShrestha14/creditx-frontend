@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Alert, AlertType } from '../models/Alert';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ToastMessageService {
   CustomProgressAnimationType: any = 'decreasing';
@@ -18,9 +18,9 @@ export class ToastMessageService {
       progressBar: true,
       progressAnimation: this.CustomProgressAnimationType,
       positionClass: 'toast-bottom-right',
-      closeButton: false,
+      closeButton: false
     };
-    console.log(alertStatus);
+    console.warn(alertStatus);
     switch (alertStatus) {
       case AlertType.ERROR:
         this.toastrService.error(message, AlertType.ERROR, options);

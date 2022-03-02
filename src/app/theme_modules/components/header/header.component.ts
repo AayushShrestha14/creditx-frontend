@@ -1,16 +1,16 @@
-import { Component, OnInit, AfterContentInit, Input } from "@angular/core";
-import { Router } from "@angular/router";
-import { NbSidebarService, NbMenuService } from "@nebular/theme";
-import { filter, map } from "rxjs";
-import { LayoutService } from "src/app/core/utils/layout.service";
-import { LocalStorageUtil } from "src/app/core/utils/local-storage-util";
+import { Component, OnInit, AfterContentInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { NbSidebarService, NbMenuService } from '@nebular/theme';
+import { filter, map } from 'rxjs';
+import { LayoutService } from 'src/app/core/utils/layout.service';
+import { LocalStorageUtil } from 'src/app/core/utils/local-storage-util';
 
 @Component({
   selector: 'app-header',
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit, AfterContentInit {
+export class HeaderComponent implements OnInit {
   static LOGOUT = 'Sign Out';
   static PROFILE = 'Profile Details';
   static CHANGE_PASSWORD = 'Change Password';
@@ -50,7 +50,6 @@ export class HeaderComponent implements OnInit, AfterContentInit {
 
   }
 
-  ngAfterContentInit(): void {}
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
