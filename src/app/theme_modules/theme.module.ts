@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -55,7 +56,8 @@ const BASE_MODULES: Array<any> = [
   FormsModule,
   NgbModule,
   NgxPaginationModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  HttpClientModule
 ];
 
 const NB_MODULES: Array<any> = [

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
+import { ThemeModule } from '../theme_modules/theme.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { AuthComponent } from './auth/auth.component';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    ThemeModule.forChild()
   ]
 })
 export class AuthModule { }
