@@ -39,7 +39,7 @@
 
 //             },
 //             (error) => {
-//               console.log(error);
+//               console.warn(error);
 //             });
 
 //         return this.permissionCheck(next, state, this.menus);

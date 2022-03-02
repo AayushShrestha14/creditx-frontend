@@ -1,0 +1,59 @@
+<div class="main">
+  <div class="container b-container" id="b-container">
+    <form class="form" id="b-form" [formGroup]="loginForm" (ngSubmit)="onUserLogin(loginForm.value)">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="form_title title">Sign In to UAB</h2>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>E-mail Address or Username</label>
+            <input
+              class="form__input form-control"
+              type="text"
+              placeholder="E-mail Address or Username"
+              [ngClass]="{ 'is-invalid': submitted && form['username'].errors }" placeholder="Email or Mobile Number" formControlName="username" name="username"
+                required
+              />
+                
+            <span *ngIf="submitted || form['username'].touched || form['username'].dirty && form['username'].invalid" class="info-msg text-danger">
+                <small *ngIf="form['username'].errors && form['username'].errors?.['required']">This is the required field.</small>
+                <small *ngIf="form['username'].errors && form['username'].errors?.['minlength']">Should have valid characters.</small>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              class="form__input form-control"
+              type="password"
+              [ngClass]="{ 'is-invalid': submitted && form['password'].errors }"  placeholder="Password" formControlName="password"
+            />
+            <span *ngIf="submitted || form['password'].touched || form['password'].dirty && form['password'].invalid" class="info-msg text-danger">
+                <small *ngIf="form['password'].errors && form['password'].errors?.['required']">This is the required field</small>
+                <small *ngIf="form['password'].errors && form['password'].errors?.['minlength']">Should have at least 8 characters.</small>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row form__link">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <a href="javascript:void(0);">Forgot your password?</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="btn btn_proceed">{{ btnStatus }}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

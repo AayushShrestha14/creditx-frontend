@@ -20,6 +20,11 @@ body {
   margin: 0;
 }
 
+nb-sidebar.menu-sidebar.disable-print.ml-1.start.expanded,
+nb-sidebar .main-container {
+  width: 14rem !important;
+}
+
 nb-sidebar.menu-sidebar.disable-print.ml-1.start.expanded img {
   margin-left: 1rem !important;
   height: 60px !important;
@@ -31,8 +36,19 @@ nb-sidebar.menu-sidebar.disable-print.ml-1.start.compacted img {
   padding-top: 20px !important;
 }
 
-.nb-theme-default nb-layout.window-mode .layout nb-layout-header nav {
-  height: 60px !important;
+nb-menu {
+  max-width: 14rem !important;
+}
+
+nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
+  line-height: 0px;
+  padding: 0.25rem 1rem;
+}
+
+.nb-theme-default nb-layout.window-mode .layout {
+  nb-layout-header nav, nb-layout-footer nav {
+    height: 50px !important;
+  }
 }
 
 .nb-theme-default nb-menu .menu-item a {

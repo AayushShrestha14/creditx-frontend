@@ -1,0 +1,68 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "no-empty-function": [
+          "error",
+          { "allow": ["constructors"] }
+        ],
+        "@typescript-eslint/no-empty-function": [
+          "error",
+          { "allow": ["constructors", "generatorFunctions", "functions"] }
+        ],
+        "@angular-eslint/no-empty-lifecycle-method": [
+          "off"
+        ],
+        "no-duplicate-imports": "error",
+        "@typescript-eslint/no-duplicate-imports": ["error"],
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "quotes": ["warn", "single", "avoid-escape"],
+        "max-len": ["error", {
+          "code": 150,
+          "ignoreUrls": true
+        }],
+        "semi-spacing": [
+          "warn",
+          {
+            "before": false,
+            "after": false
+          }
+        ],
+        "no-dupe-else-if": "error",
+        "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}

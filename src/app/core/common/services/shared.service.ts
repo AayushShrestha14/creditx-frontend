@@ -5,11 +5,10 @@ import { Alert, AlertType } from '../models/Alert';
 import { ToastMessageService } from './toast-message.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SharedService {
-
-  storage:LocalStorage = LocalStorageUtil.getStorage();
+  storage: LocalStorage = LocalStorageUtil.getStorage();
 
   constructor(
     private router: Router,
@@ -23,7 +22,7 @@ export class SharedService {
    *
    */
   public getServerErrorMessage(error: any) {
-    console.log(error.code);
+    console.warn(error.code);
     switch (error.code) {
       case 400:
         this.toastMessage.showToastMessage(
@@ -79,31 +78,31 @@ export class SharedService {
    *
    */
   getHttpSuccessResponseMessage(response: any) {
-    console.log('response: ', response);
+    console.warn('response: ', response);
     switch (response.code) {
       case 200:
         this.toastMessage.showToastMessage(
           new Alert(AlertType.INFO),
           response.message
         );
-        console.info(`Response fetched: ${response.message}`);
+        console.warn(`Response fetched: ${response.message}`);
         break;
       case 201:
         this.toastMessage.showToastMessage(
           new Alert(AlertType.SUCCESS),
           response.message
         );
-        console.info(`Data saved: ${response.message}`);
+        console.warn(`Data saved: ${response.message}`);
         break;
       case 204:
         this.toastMessage.showToastMessage(
           new Alert(AlertType.INFO),
           response.message
         );
-        console.info(`Data saved: ${response.message}`);
+        console.warn(`Data saved: ${response.message}`);
         break;
       default:
-        console.info('');
+        console.warn('');
         break;
     }
   }
@@ -116,15 +115,15 @@ export class SharedService {
    */
 
   redirectTo(uri: string) {
-    console.log('uri: ', uri);
-    this.router.navigateByUrl('/', { skipLocationChange: true })
+    console.warn('uri: ', uri);
+    this.router
+      .navigateByUrl('/', { skipLocationChange: true })
       .then(() => this.router.navigate([uri]));
   }
 
   refreshDataHavingRouterOutletNavigation(uri: string) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation  = 'reload';
+    this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([uri]);
   }
-
 }

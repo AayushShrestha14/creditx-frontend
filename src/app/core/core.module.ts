@@ -40,4 +40,11 @@ export class CoreModule {
       providers: [...NB_CORE_PROVIDERS],
     };
   }
+
+  static forChild(): ModuleWithProviders<CoreModule> {
+    return <ModuleWithProviders<CoreModule>>{
+      ngModule: CoreModule,
+      providers: [...NB_CORE_PROVIDERS],
+    };
+  }
 }

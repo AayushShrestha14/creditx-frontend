@@ -6,7 +6,7 @@ import { Pageable } from 'src/app/core/common/services/common-pageable';
   templateUrl: './paging.component.html',
   styleUrls: ['./paging.component.scss'],
 })
-export class PagingComponent implements OnInit {
+export class PagingComponent {
   @Input() pageable: Pageable = new Pageable();
 
   page = 1;
@@ -20,5 +20,4 @@ export class PagingComponent implements OnInit {
     this.changePage.emit(this.page);
   }
 
-  ngOnInit() {}
 }

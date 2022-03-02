@@ -8,6 +8,7 @@ import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ThemeModule } from './theme_modules/theme.module';
 import { CoreModule } from './core/core.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CoreModule } from './core/core.module';
     NbLayoutModule,
     NbEvaIconsModule,
     ThemeModule.forRoot(),
+    ReactiveFormsModule,
     CoreModule.forRoot(),
   ],
   providers: [],
