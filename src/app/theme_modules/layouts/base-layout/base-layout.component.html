@@ -1,0 +1,50 @@
+<!-- <nb-layout [center]="layout.id === 'center-column'" windowMode>
+    <nb-layout-header fixed class="disable-print">
+      <app-header
+        [position]="sidebar.id === 'start' ? 'normal' : 'inverse'"
+      ></app-header>
+    </nb-layout-header>
+  
+    <nb-sidebar
+      class="menu-sidebar disable-print ml-1"
+      tag="menu-sidebar"
+      responsive
+      [end]="sidebar.id === 'end'"
+    >
+      <ng-content select="nb-menu"></ng-content>
+    </nb-sidebar>
+  
+    <nb-layout-column class="main-content">
+      <ng-content select="router-outlet"></ng-content>
+    </nb-layout-column>
+    <nb-layout-footer fixed>
+      <app-footer></app-footer>
+    </nb-layout-footer>
+  </nb-layout> -->
+
+
+  <nb-layout [center]="layout.id === 'center-column'" windowMode>
+
+    <nb-layout-header subheader>
+      <a href="javascript:void(0);" (click)="toggle()"><nb-icon icon="menu-2-outline"></nb-icon></a>
+      <app-header></app-header>
+    </nb-layout-header>
+
+    <nb-sidebar
+      class="menu-sidebar disable-print ml-1"
+      responsive
+      [end]="sidebar.id === 'end'">
+      <img class="sidebar_logo" src="assets/images/sb-logo-75.png" />
+      <ng-content select="nb-menu"></ng-content>
+    </nb-sidebar>
+  
+    <nb-layout-column class="colored-column-basic">
+        <ng-content select="router-outlet"></ng-content>
+    </nb-layout-column>
+
+    <nb-layout-footer fixed>
+      <app-footer></app-footer>
+    </nb-layout-footer>
+  
+  </nb-layout>
+  

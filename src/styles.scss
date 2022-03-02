@@ -1,1 +1,44 @@
+@use "themes" as *;
+
+@use "@nebular/theme/styles/globals" as *;
+
+@include nb-install() {
+  @include nb-theme-global();
+}
 /* You can add global styles to this file, and also import other style files */
+
+$common_font_size: 12px;
+$small_font_size: 10px;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+nb-sidebar.menu-sidebar.disable-print.ml-1.start.expanded img {
+  margin-left: 1rem !important;
+  height: 60px !important;
+  padding-top: 20px !important;
+}
+nb-sidebar.menu-sidebar.disable-print.ml-1.start.compacted img {
+  margin-left: 12px !important;
+  height: 50px !important;
+  padding-top: 20px !important;
+}
+
+.nb-theme-default nb-layout.window-mode .layout nb-layout-header nav {
+  height: 60px !important;
+}
+
+.nb-theme-default nb-menu .menu-item a {
+  font-size: $small_font_size !important;
+}
+
+.common_font_size {
+  font-size: $common_font_size;
+}
