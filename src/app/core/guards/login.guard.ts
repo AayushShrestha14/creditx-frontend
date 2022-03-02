@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  CanActivate,
+  Route,
+  Router,
+  UrlSegment,
+  UrlTree
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { LocalStorageUtil } from '../utils/local-storage-util';
 
@@ -7,18 +13,34 @@ import { LocalStorageUtil } from '../utils/local-storage-util';
   providedIn: 'root'
 })
 export class LoginGuard implements CanActivate {
-
+  
   constructor(private router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (LocalStorageUtil.getStorage().at) {
-        this.router.navigate(['/home/dashboard']);
-        return false;
-    } else {
-        return true;
-    }
+  canActivate():
+    | boolean
+    | UrlTree
+    | Promise<boolean | UrlTree>
+    | Observable<boolean | UrlTree> {
+    return this.check();
   }
 
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return this.check();
+  }
+
+  private check():
+    | boolean
+    | UrlTree
+    | Promise<boolean | UrlTree>
+    | Observable<boolean | UrlTree> {
+    const isAuthenticated = LocalStorageUtil.getStorage().at;
+    return isAuthenticated ? this.router.createUrlTree(['/']) : true;
+  }
 }

@@ -20,7 +20,8 @@ body {
   margin: 0;
 }
 
-nb-sidebar.menu-sidebar.disable-print.ml-1.start.expanded {
+nb-sidebar.menu-sidebar.disable-print.ml-1.start.expanded,
+nb-sidebar .main-container {
   width: 14rem !important;
 }
 
@@ -33,6 +34,15 @@ nb-sidebar.menu-sidebar.disable-print.ml-1.start.compacted img {
   margin-left: 12px !important;
   height: 50px !important;
   padding-top: 20px !important;
+}
+
+nb-menu {
+  max-width: 14rem !important;
+}
+
+nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
+  line-height: 0px;
+  padding: 0.25rem 1rem;
 }
 
 .nb-theme-default nb-layout.window-mode .layout {
