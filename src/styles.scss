@@ -85,3 +85,15 @@ nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
 .sb_common_font_size {
   font-size: $sb_common_font_size;
 }
+
+.sb_button_primary {
+  background-color:$sb_primary_button_color;
+}
+
+.sb_button_secondary {
+  background-color:$sb_secondary_button_color;
+}
+
+.sb_button_danger {
+  background-color:$sb_danger_button_color;
+}
