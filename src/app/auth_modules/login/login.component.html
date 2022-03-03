@@ -51,7 +51,10 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <button class="btn btn_proceed">{{ btnStatus }}</button>
+          <button [disabled]="submitted" class="btn btn_proceed">
+            <span *ngIf="submitted" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            {{ btnStatus }}
+          </button>
         </div>
       </div>
     </form>
