@@ -30,6 +30,9 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "allowedCommonJsDependencies": [
+              "crypto-js"
+            ],
             "styles": [
               "./node_modules/@nebular/theme/styles/prebuilt/default.css",
               "./node_modules/ngx-toastr/toastr.css",

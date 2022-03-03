@@ -49,9 +49,9 @@ export class LoginComponent implements OnInit {
   }
 
   onUserLogin(loginDetails: any) {
-    this.btnStatus = 'Processing';
     if (this.loginForm.valid) {
       this.submitted = true;
+      this.btnStatus = 'Processing';
       this.authService.authenticate(loginDetails.username, loginDetails.password).subscribe(async (loginResponse: any) => {
         const storage = LocalStorageUtil.getStorage();
         storage.at = loginResponse.access_token;
@@ -61,9 +61,11 @@ export class LoginComponent implements OnInit {
         storage.roles = loginResponse.roles;
         storage.username = loginResponse.username;
         LocalStorageUtil.setStorage(storage);
-        
+        this.submitted = false;
         this.router.navigate(['/home/dashboard']);
       }, (error: any) => {
+        this.submitted = false;
+        this.btnStatus = 'Sign In';
         console.error(error);
       });
     }
