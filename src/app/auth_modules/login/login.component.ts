@@ -60,7 +60,6 @@ export class LoginComponent implements OnInit {
         storage.et = loginResponse.expires_in;
         storage.roles = loginResponse.roles;
         storage.username = loginResponse.username;
-        console.log(storage);
         LocalStorageUtil.setStorage(storage);
         
         this.router.navigate(['/home/dashboard']);
