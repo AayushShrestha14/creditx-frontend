@@ -37,7 +37,7 @@
             />
             <span *ngIf="submitted || form['password'].touched || form['password'].dirty && form['password'].invalid" class="info-msg text-danger">
                 <small *ngIf="form['password'].errors && form['password'].errors?.['required']">This is the required field</small>
-                <small *ngIf="form['password'].errors && form['password'].errors?.['minlength']">Should have at least 8 characters.</small>
+                <small *ngIf="form['password'].errors && form['password'].errors?.['minlength']">Should have at least 6 characters.</small>
             </span>
           </div>
         </div>

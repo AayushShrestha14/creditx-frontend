@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, delay, map, catchError, throwError } from 'rxjs';
 import { SharedService } from 'src/app/core/common/services/shared.service';
@@ -20,11 +20,14 @@ export class AuthService {
     password: string,
     showMessage?: boolean
   ): Observable<any> {
-    let loginData = new LoginModel();
-    loginData.username = username;
-    loginData.password = password;
+    const body = new HttpParams()
+    .set('username', username)
+    .set('password', password);
 
-    return this.httpClient.post<any>(`${ApiConfig.login}`, loginData).pipe(
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+    return this.httpClient.post<any>(`${ApiConfig.login}`, body.toString(), {headers}).pipe(
       delay(1500),
       map((res: Response) => {
         if (showMessage) {

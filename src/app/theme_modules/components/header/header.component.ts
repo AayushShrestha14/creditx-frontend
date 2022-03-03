@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   userFullName: string | any;
   username: string  = '';
   userProfilePicture: any;
-  roleName: string | undefined;
 
   userMenu = [
     { title: HeaderComponent.PROFILE },
@@ -44,7 +43,6 @@ export class HeaderComponent implements OnInit {
     // this.userFullName = 'Kalathoki Paribartan';
     const localStorageDetails = LocalStorageUtil.getStorage();
     this.userFullName = localStorageDetails.username;
-    this.roleName = LocalStorageUtil.getStorage().roleName;
 
     this.headerMenu();
 

@@ -8,7 +8,7 @@
       ><nb-icon icon="menu-2-outline"></nb-icon
     ></a>
     <div class="logo" (click)="goToHome()">
-      <img height="60px" src="assets/images/sb-logo-75.png" />
+      <img height="60px" src="assets/images/uab-transparent_with-white-color-1.png" />
     </div>
   </div> -->
 </div>
@@ -18,19 +18,13 @@
     size="small"
     [class.right]="position === 'normal'"
     [class.left]="position === 'inverse'">
-    <nb-action
-      class="control-item"
-      icon="question-mark-circle-outline"
-      nbTooltip="user guide"
-      *ngIf="roleName === 'admin'"
-    ></nb-action>
     <nb-action>
       <nb-user
         [nbContextMenu]="userMenu"
         nbContextMenuTag="{{ contextMenuTag }}"
         nbContextMenuTrigger="hover"
         [name]="userFullName"
-        [picture]="'assets/images/sb-logo-75.png'"
+        [picture]="'assets/images/uab-transparent_with-white-color-1.png'"
         class="text-dark"
       ></nb-user>
     </nb-action>
