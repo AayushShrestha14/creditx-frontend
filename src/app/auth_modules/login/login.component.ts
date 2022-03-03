@@ -54,22 +54,28 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.submitted = true;
       this.btnStatus = 'Please Wait ...';
-      this.authService.authenticate(loginDetails.username, loginDetails.password).subscribe(async (loginResponse: any) => {
-        const storage = LocalStorageUtil.getStorage();
-        storage.at = loginResponse.access_token;
-        storage.rt = loginResponse.refresh_token;
-        storage.ty = loginResponse.token_type;
-        storage.et = loginResponse.expires_in;
-        storage.roles = loginResponse.roles;
-        storage.username = loginResponse.username;
-        LocalStorageUtil.setStorage(storage);
-        this.router.navigate(['/home/dashboard']);
-      }, (error: any) => {
-        this.submitted = false;
-        this.btnStatus = 'Sign In';
-        this.errorMessage = error.error.message;
-        console.error(error);
-      });
+      this.authService.authenticate(loginDetails.username, loginDetails.password).subscribe(
+        {
+          next: (loginResponse) => {
+            const storage = LocalStorageUtil.getStorage();
+            storage.at = loginResponse.access_token;
+            storage.rt = loginResponse.refresh_token;
+            storage.ty = loginResponse.token_type;
+            storage.et = loginResponse.expires_in;
+            storage.roles = loginResponse.roles;
+            storage.username = loginResponse.username;
+            LocalStorageUtil.setStorage(storage);
+            this.router.navigate(['/home/dashboard']);
+          },
+          error: (error) => {
+            this.submitted = false;
+            this.btnStatus = 'Sign In';
+            this.errorMessage = error.error.message;
+            console.error(error);
+          },
+          complete: () => {}
+        }
+      );
     }
   }
 }
