@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BranchComponent } from './branch/branch.component';
+import { BranchComponent } from './branch_modules/branch/branch.component';
 
 const routes: Routes = [
   {

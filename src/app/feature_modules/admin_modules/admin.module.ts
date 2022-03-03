@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { BranchComponent } from './branch/branch.component';
+import { BranchComponent } from './branch_modules/branch/branch.component';
 
 
 @NgModule({
