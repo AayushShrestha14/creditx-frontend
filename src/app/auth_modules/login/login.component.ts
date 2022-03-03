@@ -5,6 +5,8 @@ import {
   FormGroup,
   FormBuilder
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LocalStorageUtil } from 'src/app/core/utils/local-storage-util';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +39,7 @@ export class LoginComponent implements OnInit {
       ],
       password: [
         null,
-        Validators.compose([Validators.required, Validators.minLength(8)])
+        Validators.compose([Validators.required, Validators.minLength(6)])
       ]
     });
   }
@@ -49,8 +52,17 @@ export class LoginComponent implements OnInit {
     this.btnStatus = 'Processing';
     if (this.loginForm.valid) {
       this.submitted = true;
-      this.authService.authenticate(loginDetails.username, loginDetails.password).subscribe((response: any) => {
-        console.log(response);
+      this.authService.authenticate(loginDetails.username, loginDetails.password).subscribe(async (loginResponse: any) => {
+        const storage = LocalStorageUtil.getStorage();
+        storage.at = loginResponse.access_token;
+        storage.rt = loginResponse.refresh_token;
+        storage.ty = loginResponse.token_type;
+        storage.et = loginResponse.expires_in;
+        storage.roles = loginResponse.roles;
+        storage.username = loginResponse.username;
+        LocalStorageUtil.setStorage(storage);
+        
+        this.router.navigate(['/home/dashboard']);
       }, (error: any) => {
         console.error(error);
       });

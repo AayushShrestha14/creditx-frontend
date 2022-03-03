@@ -2,6 +2,7 @@ import { ObjectUtil } from './ObjectUtil';
 import { CryptoJsUtil } from './crypto-js-util';
 import { environment } from '../../../environments/environment';
 import { NbMenuItem } from '@nebular/theme';
+import { AccessRoles } from '../common/models/access-roles.model';
 
 export class LocalStorageUtil {
   /**
@@ -50,13 +51,15 @@ export class LocalStorage {
   ty: string | undefined;
   et: string | undefined;
   username: string | undefined;
-  roleName: string | undefined;
-  roleType: string | undefined;
-  roleAccess: string | undefined;
+  // roleName: string | undefined;
+  // roleType: string | undefined;
+  // roleAccess: string | undefined;
   userId: string | undefined;
   userFullName: string | undefined;
   userProfilePicture: string | undefined;
-  roleId: string | undefined;
-  productMode: string | undefined;
+  // roleId: string | undefined;
+  // productMode: string | undefined;
+
+  roles: AccessRoles[] = Array<AccessRoles>();
   menus: NbMenuItem[] = Array<NbMenuItem>();
 }
