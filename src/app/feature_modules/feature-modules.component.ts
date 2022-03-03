@@ -23,8 +23,13 @@ export class FeatureModulesComponent implements OnInit {
       link: '/home/customers',
       icon: 'person-done-outline'
     };
+    const branch = {
+      title: 'Branch',
+      link: '/home/admin_modules/branch',
+      icon: 'person-done-outline'
+    };
 
-    this.menus.push(dashboard, customer);
+    this.menus.push(dashboard, customer, branch);
   }
 
   
