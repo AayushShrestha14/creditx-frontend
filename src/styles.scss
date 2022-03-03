@@ -7,8 +7,19 @@
 }
 /* You can add global styles to this file, and also import other style files */
 
-$common_font_size: 12px;
-$small_font_size: 10px;
+$sb_product_color: #0054a6; // your applications-color code should be matched with application logo color i.e. this is used when required to styling header, footer . . .
+
+$sb_theme_background_color: #ededf7; // your application background color should be matched with as per requirement
+
+$sb_primary_button_color: blue; // your primary button color
+
+$sb_secondary_button_color: green; // your secondary button color
+
+$sb_danger_button_color: red; // your danger button color
+
+$sb_common_font_size: 12px; // default font size
+
+$sb_small_font_size: 10px; // small font size
 
 html, body {
   height: 100%;
@@ -18,6 +29,16 @@ html, body {
 
 body {
   margin: 0;
+}
+
+// for theme/app styling
+
+nb-layout-column.colored-column-basic {
+  background: $sb_theme_background_color;
+}
+
+nb-layout-header.layout_header {
+  background: $sb_product_color;
 }
 
 nb-sidebar.menu-sidebar.disable-print.ml-1.start.expanded,
@@ -30,6 +51,7 @@ nb-sidebar.menu-sidebar.disable-print.ml-1.start.expanded img {
   height: 60px !important;
   padding-top: 20px !important;
 }
+
 nb-sidebar.menu-sidebar.disable-print.ml-1.start.compacted img {
   margin-left: 12px !important;
   height: 50px !important;
@@ -52,9 +74,14 @@ nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
 }
 
 .nb-theme-default nb-menu .menu-item a {
-  font-size: $small_font_size !important;
+  font-size: $sb_small_font_size !important;
 }
 
-.common_font_size {
-  font-size: $common_font_size;
+
+/**
+* for component styling
+*/
+
+.sb_common_font_size {
+  font-size: $sb_common_font_size;
 }
