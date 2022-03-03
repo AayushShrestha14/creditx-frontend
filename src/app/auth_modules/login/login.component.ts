@@ -17,6 +17,8 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
   btnStatus: string = 'Sign In';
 
+  errorMessage: string = '';
+  
   loginForm: FormGroup = new FormGroup({});
 
   submitted: boolean = false;
@@ -65,6 +67,7 @@ export class LoginComponent implements OnInit {
       }, (error: any) => {
         this.submitted = false;
         this.btnStatus = 'Sign In';
+        this.errorMessage = error.error.message;
         console.error(error);
       });
     }
