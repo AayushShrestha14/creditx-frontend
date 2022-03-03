@@ -65,7 +65,6 @@ export class LoginComponent implements OnInit {
             storage.roles = loginResponse.roles;
             storage.username = loginResponse.username;
             LocalStorageUtil.setStorage(storage);
-            this.router.navigate(['/home/dashboard']);
           },
           error: (error) => {
             this.submitted = false;
@@ -73,7 +72,9 @@ export class LoginComponent implements OnInit {
             this.errorMessage = error.error.message;
             console.error(error);
           },
-          complete: () => {}
+          complete: () => {
+            this.router.navigate(['/home/dashboard']);
+          }
         }
       );
     }
