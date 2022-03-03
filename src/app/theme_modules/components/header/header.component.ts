@@ -12,7 +12,7 @@ import { LocalStorageUtil } from 'src/app/core/utils/local-storage-util';
 })
 export class HeaderComponent implements OnInit {
   static LOGOUT = 'Sign Out';
-  static PROFILE = 'Profile Details';
+  static PROFILE = 'View Profile Details';
   static CHANGE_PASSWORD = 'Change Password';
   contextMenuTag = 'user-context-menu';
 
@@ -23,10 +23,16 @@ export class HeaderComponent implements OnInit {
   username: string  = '';
   userProfilePicture: any;
 
-  userMenu = [
-    { title: HeaderComponent.PROFILE },
-    { title: HeaderComponent.CHANGE_PASSWORD },
-    { title: HeaderComponent.LOGOUT },
+  userMenu: Array<any> = [
+    { title: HeaderComponent.PROFILE, handler: () => {
+      
+    }},
+    { title: HeaderComponent.CHANGE_PASSWORD, handler: () => {
+
+    }},
+    { title: HeaderComponent.LOGOUT, handler: () => {
+      this.onSignOut();
+    }},
   ];
 
   notificationCount: any;
@@ -44,7 +50,7 @@ export class HeaderComponent implements OnInit {
     const localStorageDetails = LocalStorageUtil.getStorage();
     this.userFullName = localStorageDetails.username;
 
-    this.headerMenu();
+    // this.headerMenu();
 
   }
 
@@ -60,27 +66,32 @@ export class HeaderComponent implements OnInit {
     this.menuService.navigateHome();
   }
 
-  headerMenu(): void {
-    this.menuService
-      .onItemClick()
-      .pipe(
-        filter(({ tag }) => tag === this.contextMenuTag),
-        map(({ item: { title } }) => title),
-        filter(
-          (title) =>
-            title === HeaderComponent.LOGOUT ||
-            title === HeaderComponent.PROFILE ||
-            title === HeaderComponent.CHANGE_PASSWORD
-        )
-      )
-      .subscribe((value) => {
-        if (value === HeaderComponent.LOGOUT) {
-          LocalStorageUtil.clearStorage();
-          this.router.navigate(['/auth/login']);
-        } else if (value === HeaderComponent.PROFILE) {
-        } else if (value === HeaderComponent.CHANGE_PASSWORD) {
-        }
-      });
+  // headerMenu(): void {
+  //   this.menuService
+  //     .onItemClick()
+  //     .pipe(
+  //       filter(({ tag }) => tag === this.contextMenuTag),
+  //       map(({ item: { title } }) => title),
+  //       filter(
+  //         (title) =>
+  //           title === HeaderComponent.LOGOUT ||
+  //           title === HeaderComponent.PROFILE ||
+  //           title === HeaderComponent.CHANGE_PASSWORD
+  //       )
+  //     )
+  //     .subscribe((value) => {
+  //       if (value === HeaderComponent.LOGOUT) {
+  //         LocalStorageUtil.clearStorage();
+  //         this.router.navigate(['/auth/login']);
+  //       } else if (value === HeaderComponent.PROFILE) {
+  //       } else if (value === HeaderComponent.CHANGE_PASSWORD) {
+  //       }
+  //     });
+  // }
+
+  onSignOut(): void {
+    LocalStorageUtil.clearStorage();
+    this.router.navigate(['/auth/login']);
   }
 
 }

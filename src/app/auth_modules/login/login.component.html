@@ -42,6 +42,15 @@
           </div>
         </div>
       </div>
+      <div class="row" *ngIf="errorMessage">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <span class="info-msg text-danger">
+              {{errorMessage}}
+            </span>
+          </div>
+        </div>
+      </div>
       <div class="row form__link">
         <div class="col-sm-12">
           <div class="form-group">

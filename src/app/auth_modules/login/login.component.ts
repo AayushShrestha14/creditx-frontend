@@ -17,6 +17,8 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
   btnStatus: string = 'Sign In';
 
+  errorMessage: string = '';
+  
   loginForm: FormGroup = new FormGroup({});
 
   submitted: boolean = false;
@@ -51,7 +53,7 @@ export class LoginComponent implements OnInit {
   onUserLogin(loginDetails: any) {
     if (this.loginForm.valid) {
       this.submitted = true;
-      this.btnStatus = 'Processing';
+      this.btnStatus = 'Please Wait ...';
       this.authService.authenticate(loginDetails.username, loginDetails.password).subscribe(async (loginResponse: any) => {
         const storage = LocalStorageUtil.getStorage();
         storage.at = loginResponse.access_token;
@@ -61,11 +63,11 @@ export class LoginComponent implements OnInit {
         storage.roles = loginResponse.roles;
         storage.username = loginResponse.username;
         LocalStorageUtil.setStorage(storage);
-        this.submitted = false;
         this.router.navigate(['/home/dashboard']);
       }, (error: any) => {
         this.submitted = false;
         this.btnStatus = 'Sign In';
+        this.errorMessage = error.error.message;
         console.error(error);
       });
     }

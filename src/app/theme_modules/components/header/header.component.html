@@ -1,32 +1,60 @@
-<div
+<!-- <div
   class="header-container"
   [class.left]="position === 'normal'"
   [class.right]="position === 'inverse'"
 >
-  <!-- <div class="logo-container">
-    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle"
-      ><nb-icon icon="menu-2-outline"></nb-icon
-    ></a>
-    <div class="logo" (click)="goToHome()">
-      <img height="60px" src="assets/images/uab-transparent_with-white-color-1.png" />
-    </div>
-  </div> -->
-</div>
+</div> -->
 
 <div class="header-container">
-  <nb-actions
-    size="small"
-    [class.right]="position === 'normal'"
-    [class.left]="position === 'inverse'">
-    <nb-action>
-      <nb-user
-        [nbContextMenu]="userMenu"
-        nbContextMenuTag="{{ contextMenuTag }}"
-        nbContextMenuTrigger="hover"
-        [name]="userFullName"
-        [picture]="'assets/images/uab-transparent_with-white-color-1.png'"
-        class="text-dark"
-      ></nb-user>
-    </nb-action>
-  </nb-actions>
+  <nav class="navbar navbar-expand-sm">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            title="{{ userFullName }}"
+            class="nav-link dropdown-toggle"
+            href="javascript:void(0);"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="assets/images/uab_logo_with_bg.png"
+              width="40"
+              height="40"
+              class="rounded-circle"
+            />
+            <span class="ms-2 sb_common_font_size text-center text-white">{{
+              userFullName?.length > 10
+                ? userFullName?.slice(0, 10) + '...'
+                : userFullName
+            }}</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ng-container
+              *ngFor="let menu of userMenu; let last = last">
+              <li title="{{'Click to ' + menu?.title}}" (click)="menu.handler()">
+                <a class="dropdown-item sb_common_font_size" href="javascript:void(0);">{{
+                  menu?.title
+                }}</a>
+              </li>
+              <li *ngIf="!last"><hr class="dropdown-divider" /></li>
+            </ng-container>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>
