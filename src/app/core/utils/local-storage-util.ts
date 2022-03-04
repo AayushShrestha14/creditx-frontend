@@ -11,12 +11,12 @@ export class LocalStorageUtil {
    */
   public static getStorage(): LocalStorage {
     return ObjectUtil.isEmpty(
-      localStorage.getItem(environment.LOCAL_STORAGE_NAME)
+      localStorage.getItem(environment.appConfigName)
     )
       ? new LocalStorage()
       : JSON.parse(
           CryptoJsUtil.decrypt(
-            localStorage.getItem(environment.LOCAL_STORAGE_NAME)
+            localStorage.getItem(environment.appConfigName)
           )
         );
   }
@@ -31,7 +31,7 @@ export class LocalStorageUtil {
    */
   public static setStorage(data: LocalStorage): void {
     localStorage.setItem(
-      environment.LOCAL_STORAGE_NAME,
+      environment.appConfigName,
       CryptoJsUtil.encrypt(JSON.stringify(data))
     );
   }

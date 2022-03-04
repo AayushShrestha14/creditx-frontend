@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageUtil } from 'src/app/core/utils/local-storage-util';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -16,6 +17,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   btnStatus: string = 'Sign In';
+  
+  appName: string = environment.appName;
 
   errorMessage: string = '';
   
