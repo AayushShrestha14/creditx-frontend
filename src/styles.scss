@@ -93,11 +93,15 @@ nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
 }
 
 .sb_button_secondary {
-  background-color:$sb_secondary_button_color;
+  background-color:$sb_secondary_button_color!important;
+  color: white !important;
+  padding: 1px 4px !important;
 }
 
 .sb_button_danger {
-  background-color:$sb_danger_button_color;
+  background-color:$sb_danger_button_color!important;
+  color: white !important;
+  padding: 1px 4px !important;
 }
 
 // for table styling
@@ -115,4 +119,11 @@ table.table.sb_table {
 
 hr.hr_line {
   margin: 0 0 1rem !important;
+}
+
+// for action icons
+
+button.btn.sb_button_primary.action_buttons {
+  margin: 0 2px;
+
 }
