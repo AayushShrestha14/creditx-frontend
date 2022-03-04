@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './core/auth-interceptor/request-interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,10 +20,8 @@ import { RequestInterceptor } from './core/auth-interceptor/request-interceptor'
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule,
-    NbEvaIconsModule,
+    ToastrModule.forRoot(),
     ThemeModule.forRoot(),
-    ReactiveFormsModule,
     CoreModule.forRoot()
   ],
   providers: [

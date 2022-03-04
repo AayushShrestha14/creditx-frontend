@@ -95,7 +95,9 @@ const NB_MODULES: Array<any> = [
   NbIconModule,
   NbToggleModule,
   NbEvaIconsModule,
-  NbBadgeModule
+  NbBadgeModule,
+  NbLayoutModule,
+  NbEvaIconsModule,
 ];
 
 const COMPONENTS: Array<any> = [
