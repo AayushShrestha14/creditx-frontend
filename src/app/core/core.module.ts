@@ -8,6 +8,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { throwIfAlreadyLoaded } from './guards/module-import-guard';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { NbCardModule } from '@nebular/theme';
 
 const IMPORTS_EXPORTS = [
   CommonModule,
@@ -21,12 +22,15 @@ const DATA_SERVICES: Array<any> = [];
 
 export const NB_CORE_PROVIDERS: Array<any> = [...DATA_SERVICES];
 
-const UTILITY_MODULES: Array<any> = [];
+const UTILITY_MODULES: Array<any> = [
+  NbCardModule
+];
 
 @NgModule({
   imports: [CommonModule, FormsModule, ...UTILITY_MODULES, ...IMPORTS_EXPORTS],
   exports: [...UTILITY_MODULES, ...IMPORTS_EXPORTS],
-  declarations: [],
+  declarations: [
+  ],
   entryComponents: [],
 })
 export class CoreModule {

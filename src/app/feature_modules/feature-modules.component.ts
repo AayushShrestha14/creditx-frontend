@@ -28,8 +28,13 @@ export class FeatureModulesComponent implements OnInit {
       link: '/home/admin_modules/branch',
       icon: 'person-done-outline'
     };
+    const rolesAndPermissions = {
+      title: 'Roles & Permissions',
+      link: '/home/admin_modules/roles_and_permissions',
+      icon: 'person-done-outline'
+    };
 
-    this.menus.push(dashboard, customer, branch);
+    this.menus.push(dashboard, customer, branch, rolesAndPermissions);
   }
 
   

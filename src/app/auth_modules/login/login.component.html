@@ -3,7 +3,7 @@
     <form class="form" id="b-form" [formGroup]="loginForm" (ngSubmit)="onUserLogin(loginForm.value)">
       <div class="row">
         <div class="col-sm-12">
-          <h2 class="form_title title">Sign In to UAB</h2>
+          <h2 class="form_title title">Sign In to uab</h2>
         </div>
       </div>
       <hr />
@@ -18,7 +18,7 @@
               [ngClass]="{ 'is-invalid': submitted && form['username'].errors }" placeholder="Email or Mobile Number" formControlName="username" name="username"
                 required
               />
-                
+
             <span *ngIf="submitted || form['username'].touched || form['username'].dirty && form['username'].invalid" class="info-msg text-danger">
                 <small *ngIf="form['username'].errors && form['username'].errors?.['required']">This is the required field.</small>
                 <small *ngIf="form['username'].errors && form['username'].errors?.['minlength']">Should have valid characters.</small>
