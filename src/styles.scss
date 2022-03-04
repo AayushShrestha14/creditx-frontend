@@ -11,7 +11,7 @@ $sb_product_color: #0054a6; // your applications-color code should be matched wi
 
 $sb_theme_background_color: #ededf7; // your application background color should be matched with as per requirement
 
-$sb_primary_button_color: blue; // your primary button color
+$sb_primary_button_color: #0054a6; // your primary button color
 
 $sb_secondary_button_color: green; // your secondary button color
 
@@ -87,7 +87,9 @@ nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
 }
 
 .sb_button_primary {
-  background-color:$sb_primary_button_color;
+  background-color:$sb_primary_button_color !important;
+  color: white !important;
+  padding: 1px 4px !important;
 }
 
 .sb_button_secondary {
@@ -96,4 +98,21 @@ nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
 
 .sb_button_danger {
   background-color:$sb_danger_button_color;
+}
+
+// for table styling
+
+table.table.sb_table {
+  thead {
+    background-color:$sb_product_color;
+    color: white;
+  }
+}
+
+.sb-small {
+  font-size: $sb_common_font_size;
+}
+
+hr.hr_line {
+  margin: 0 0 1rem !important;
 }

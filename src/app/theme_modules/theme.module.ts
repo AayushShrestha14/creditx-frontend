@@ -46,6 +46,7 @@ import {
 } from '@nebular/theme';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { IconCardComponent } from '../core/common/components/icon-card/icon-card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PagingComponent } from './components/paging/paging.component';
@@ -101,7 +102,8 @@ const COMPONENTS: Array<any> = [
   HeaderComponent,
   FooterComponent,
   BaseLayoutComponent,
-  PagingComponent
+  PagingComponent,
+  IconCardComponent
 ];
 
 const ENTRY_COMPONENTS: Array<any> = [];
