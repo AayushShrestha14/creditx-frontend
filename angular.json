@@ -127,6 +127,7 @@
   },
   "defaultProject": "creditx_pro",
   "cli": {
+    "analytics": "2d0786a1-0ac9-42e2-a56f-ebf2520447d0",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

@@ -7,7 +7,7 @@ import { NbMenuItem } from '@nebular/theme';
   styleUrls: ['./feature-modules.component.scss']
 })
 export class FeatureModulesComponent implements OnInit {
-  
+
   menus: NbMenuItem[] = Array<NbMenuItem>();
 
   constructor() { }
@@ -33,9 +33,14 @@ export class FeatureModulesComponent implements OnInit {
       link: '/home/admin_modules/roles_and_permissions',
       icon: 'person-done-outline'
     };
+    const loanConfiguration = {
+      title: 'Loan Configuration',
+      link: '/home/admin_modules/loan_configuration',
+      icon: 'person-done-outline'
+    }
 
-    this.menus.push(dashboard, customer, branch, rolesAndPermissions);
+    this.menus.push(dashboard, customer, branch, rolesAndPermissions,loanConfiguration);
   }
 
-  
+
 }
