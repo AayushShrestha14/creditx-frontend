@@ -7,13 +7,15 @@ import { RolesPermissionsListComponent } from './roles_permissions_modules/roles
 import { ThemeModule } from 'src/app/theme_modules/theme.module';
 import { CommonResourceModule } from 'src/app/common_resource_modules/common-resource.module';
 import { RolesActionComponent } from './roles_permissions_modules/action-component/roles-action.component';
+import { HeaderActionComponent } from './roles_permissions_modules/action-component/header-action/header-action.component';
 
 
 @NgModule({
   declarations: [
     BranchComponent,
     RolesPermissionsListComponent,
-    RolesActionComponent
+    RolesActionComponent,
+    HeaderActionComponent
   ],
   imports: [
     CommonModule,

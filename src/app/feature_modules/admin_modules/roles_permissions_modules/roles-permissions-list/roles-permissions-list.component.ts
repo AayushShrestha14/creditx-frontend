@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumnSetting } from 'src/app/common_resource_modules/models/table-column-setting.model';
 import { Pageable } from 'src/app/core/common/services/common-pageable';
+import { HeaderActionComponent } from '../action-component/header-action/header-action.component';
 import { RolesActionComponent } from '../action-component/roles-action.component';
 
 @Component({
@@ -13,6 +14,8 @@ export class RolesPermissionsListComponent implements OnInit {
   title: string = 'All Roles & Permissions';
   
   editComponentLoader = RolesActionComponent;
+
+  headerActionComponentLoad = HeaderActionComponent;
 
   page: number = 1;
 

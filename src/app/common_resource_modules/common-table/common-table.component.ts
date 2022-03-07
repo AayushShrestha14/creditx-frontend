@@ -23,6 +23,8 @@ export class CommonTableComponent implements OnInit, OnChanges {
   @ViewChild(ComponentloaderDirective, {static: false}) componentloader!: ComponentloaderDirective;
 
   @Input() actionComponentLoader: any;
+
+  @Input() headerActionComponent: any;
   
   @Input() responseJSONArray: any[] = Array<any | []>(); // send response array details
 
