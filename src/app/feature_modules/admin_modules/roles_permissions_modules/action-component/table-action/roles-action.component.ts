@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RolesPermissionsResponse } from '../models/roles-permission-response.model';
+import { RolesPermissionsResponse } from '../../models/roles-permission-response.model';
 
 @Component({
   selector: 'app-roles-action',

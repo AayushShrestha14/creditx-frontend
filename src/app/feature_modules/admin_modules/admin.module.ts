@@ -6,8 +6,8 @@ import { BranchComponent } from './branch_modules/branch/branch.component';
 import { RolesPermissionsListComponent } from './roles_permissions_modules/roles-permissions-list/roles-permissions-list.component';
 import { ThemeModule } from 'src/app/theme_modules/theme.module';
 import { CommonResourceModule } from 'src/app/common_resource_modules/common-resource.module';
-import { RolesActionComponent } from './roles_permissions_modules/action-component/roles-action.component';
 import { HeaderActionComponent } from './roles_permissions_modules/action-component/header-action/header-action.component';
+import { RolesActionComponent } from './roles_permissions_modules/action-component/table-action/roles-action.component';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { HeaderActionComponent } from './roles_permissions_modules/action-compon
     CommonResourceModule
   ], 
   exports: [
-    RolesActionComponent
+    RolesActionComponent,
+    HeaderActionComponent
   ]
 })
 export class AdminModule { }

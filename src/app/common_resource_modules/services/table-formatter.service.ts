@@ -17,6 +17,7 @@ export class TableFormatterService {
    *
    */
   convertToFlatPropertyMap(obj: object) {
+    console.log('convertToFlatPropertyMap: ', obj);
     const keySeparator = '.';
     const generateFlatternObjectsDataRecursively = (
       obj: object,

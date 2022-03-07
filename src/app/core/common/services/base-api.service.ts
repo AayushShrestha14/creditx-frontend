@@ -1,8 +1,8 @@
 import { Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { ApiUtils } from '../../utils/api-utils/api-utils';
 import { catchError, delay, map, tap } from 'rxjs/operators';
 import { SharedService } from './shared.service';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * API are expected to be developed in rest pattern
@@ -19,7 +19,7 @@ export abstract class BaseApiService<T> {
   private objs!: T[];
 
   protected constructor(
-    protected http: HttpClient,
+    protected httpClient: HttpClient,
     protected sharedService: SharedService
   ) {}
 
@@ -28,7 +28,7 @@ export abstract class BaseApiService<T> {
   public save(obj: T, showMessage?: boolean): Observable<any> {
     const req = ApiUtils.getRequest(this.getApi());
 
-    return this.http.post<T>(req.url, obj).pipe(
+    return this.httpClient.post<T>(req.url, obj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -46,7 +46,7 @@ export abstract class BaseApiService<T> {
   public saveAny(obj: any, showMessage?: boolean): Observable<any> {
     const req = ApiUtils.getRequest(this.getApi());
 
-    return this.http.post<T>(req.url, obj).pipe(
+    return this.httpClient.post<T>(req.url, obj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -64,7 +64,7 @@ export abstract class BaseApiService<T> {
   public saveAll(obj: T[], showMessage?: boolean): Observable<any> {
     const req = ApiUtils.getRequest(this.getApi());
 
-    return this.http.post<T>(req.url, obj).pipe(
+    return this.httpClient.post<T>(req.url, obj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -82,7 +82,7 @@ export abstract class BaseApiService<T> {
   public saveWithFile(obj: T, showMessage?: boolean): Observable<any> {
     const req = ApiUtils.getRequestWithFileSupport(this.getApi());
 
-    return this.http.post<T>(req.url, obj).pipe(
+    return this.httpClient.post<T>(req.url, obj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -101,7 +101,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.put<T>(req.url, obj).pipe(
+    return this.httpClient.put<T>(req.url, obj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -124,7 +124,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/${id}`;
     const req = ApiUtils.getRequestWithFileSupport(api);
 
-    return this.http.put<T>(req.url, obj).pipe(
+    return this.httpClient.put<T>(req.url, obj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -143,7 +143,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/detail`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.post<T>(req.url, { uriId: id }).pipe(
+    return this.httpClient.post<T>(req.url, { uriId: id }).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -162,7 +162,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/select`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.post<T>(req.url, { uriId: id }).pipe(
+    return this.httpClient.post<T>(req.url, { uriId: id }).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -181,7 +181,7 @@ export abstract class BaseApiService<T> {
     req: { url: string },
     showMessage?: boolean
   ): Observable<any> {
-    return this.http.get<T>(req.url).pipe(
+    return this.httpClient.get<T>(req.url).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -203,7 +203,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/one`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.post<T>(req.url, searchObj).pipe(
+    return this.httpClient.post<T>(req.url, searchObj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -222,7 +222,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/delete`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.post<T>(req.url, { uriId: id }).pipe(
+    return this.httpClient.post<T>(req.url, { uriId: id }).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -241,7 +241,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/all`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.get<any>(req.url).pipe(
+    return this.httpClient.get<any>(req.url).pipe(
       delay(1500),
       map((res: T) => {
         console.warn('res: ', res);
@@ -267,7 +267,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/all`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.post<T>(req.url, searchObj).pipe(
+    return this.httpClient.post<T>(req.url, searchObj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -296,7 +296,7 @@ export abstract class BaseApiService<T> {
     }
     const req = ApiUtils.getRequest(api);
 
-    return this.http.get(req.url).pipe(
+    return this.httpClient.get(req.url).pipe(
       tap(
         (res: any) => {
           if (showMessage) {
@@ -321,7 +321,7 @@ export abstract class BaseApiService<T> {
   ): Observable<any> {
     const api = `${this.getApi()}/list?page=${page}&size=${size}`;
     const req = ApiUtils.getRequest(api);
-    return this.http.post<any>(req.url, searchObj).pipe(
+    return this.httpClient.post<any>(req.url, searchObj).pipe(
       map((res: any) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -340,7 +340,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/csv`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.post<T>(req.url, searchObj).pipe(
+    return this.httpClient.post<T>(req.url, searchObj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -359,7 +359,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/statusCount`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.get<T>(req.url).pipe(
+    return this.httpClient.get<T>(req.url).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -381,7 +381,7 @@ export abstract class BaseApiService<T> {
     const api = `${this.getApi()}/list/filtered`;
     const req = ApiUtils.getRequest(api);
 
-    return this.http.post<T>(req.url, searchObj).pipe(
+    return this.httpClient.post<T>(req.url, searchObj).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -400,7 +400,7 @@ export abstract class BaseApiService<T> {
     const api = 'v1/calendar';
     const req = ApiUtils.getRequest(api);
 
-    return this.http.get<T>(req.url).pipe(
+    return this.httpClient.get<T>(req.url).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);

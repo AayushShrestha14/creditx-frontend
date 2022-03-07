@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { ObjectUtil } from 'src/app/core/utils/ObjectUtil';
 
 @Pipe({
   name: 'dataFormat'
@@ -7,7 +8,7 @@ export class FormatDataPipe implements PipeTransform {
   constructor() {}
 
   transform(value: any, format: string) {
-    if (value === undefined) {
+    if (ObjectUtil.isEmpty(value)) {
       return 'Not Available';
     }
     if (format === 'default') {
