@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TableColumnSetting } from 'src/app/common_resource_modules/models/table-column-setting.model';
 import { Pageable } from 'src/app/core/common/services/common-pageable';
 import { HeaderActionComponent } from '../action-component/header-action/header-action.component';
-import { RolesActionComponent } from '../action-component/roles-action.component';
+import { RolesActionComponent } from '../action-component/table-action/roles-action.component';
+import { RolesPermissionsResponse } from '../models/roles-permission-response.model';
+import { RolesPermissionService } from '../services/roles-permission.service';
 
 @Component({
   selector: 'app-roles-permissions-list',
@@ -23,39 +25,51 @@ export class RolesPermissionsListComponent implements OnInit {
   
   setBankJSONDetails: TableColumnSetting[] = [
     {
-      primaryKey: 'bankName',
-      header: 'Bank Name',
+      primaryKey: 'roleName',
+      header: 'Role Name',
     },
     {
-      primaryKey: 'bankCode',
-      header: 'Bank Code',
+      primaryKey: 'roleAccess',
+      header: 'Role Access',
+    },
+    {
+      primaryKey: 'roleType',
+      header: 'Role Type',
+    },
+    {
+      primaryKey: 'authorityLabel',
+      header: 'Authority Label',
+    },
+    {
+      primaryKey: 'createdBy',
+      header: 'Created By',
+    },
+    {
+      primaryKey: 'lastModifiedBy',
+      header: 'Last Modified By',
     }
   ];
-  bankDetails = [
-    {
-      id: 5,
-      bankName: 'Bank Name',
-      bankCode: 'Bank Code',
-    },
-    {
-      id: 10,
-      bankName: 'Bank Name',
-      bankCode: 'Bank Code',
-    },
-    {
-      id: 20,
-      bankName: 'Bank Name',
-      bankCode: 'Bank Code',
-    }
-  ]
 
-  constructor() { }
+  rolesPermissionsResponse: Array<RolesPermissionsResponse> = new Array<RolesPermissionsResponse>();
+
+  constructor(
+    private rolesPermissionService: RolesPermissionService
+  ) { }
 
   ngOnInit(): void {
     this.allRoleList();
   }
 
-  allRoleList() {}
+  allRoleList() {
+    this.rolesPermissionService.getAll().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.rolesPermissionsResponse = response?.detail;
+      },
+      error: (error) => {},
+      complete: () => {}
+    });
+  }
 
   changePage(page: number) {
     this.page = page;
