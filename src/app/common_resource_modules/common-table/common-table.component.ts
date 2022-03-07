@@ -24,7 +24,7 @@ export class CommonTableComponent implements OnInit, OnChanges {
 
   @Input() actionComponentLoader: any;
   
-  @Input() responseArray: any[] = Array<any | []>(); // send response array details
+  @Input() responseJSONArray: any[] = Array<any | []>(); // send response array details
 
   keys: string[] = Array<string>(); // store response keys
 
@@ -51,18 +51,18 @@ export class CommonTableComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges() {
-    // to change any type of responseArray into flat responseArray
-    this.responseArray = this.responseArray?.map(value => {
+    // to change any type of responseJSONArray into flat responseJSONArray
+    this.responseJSONArray = this.responseJSONArray?.map(value => {
       return value = this.tableFormatterService.convertToFlatPropertyMap(value);
     });
 
-    // this.keys = Object.keys(this.responseArray[0]);
+    // this.keys = Object.keys(this.responseJSONArray[0]);
     if (this.setHeaderJSON) {
       // when setHeaderJSON provided
       this.columnMapsBasedOnKey = this.setHeaderJSON;
     } else {
       // no setHeaderJSON, create column maps with defaults
-      this.columnMapsBasedOnKey = Object.keys(this.responseArray[0]).map((key) => {
+      this.columnMapsBasedOnKey = Object.keys(this.responseJSONArray[0]).map((key) => {
         return {
           primaryKey: key,
           header:

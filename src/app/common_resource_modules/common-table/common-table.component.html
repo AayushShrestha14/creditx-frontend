@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="
-                        let response of responseArray | paginate : { itemsPerPage: pageable.size, currentPage: page, totalItems: pageable.totalElements };
+                        let response of responseJSONArray | paginate : { itemsPerPage: pageable.size, currentPage: page, totalItems: pageable.totalElements };
                         let i = index">
                             <td class="sb_sm_col">
                                 <label>
@@ -42,7 +42,7 @@
                                 </label>
                             </td>
                             <td class="sb_sm_col" *ngIf="isContainsActionColumns">
-                                <ng-template componentloader [config]="response"></ng-template>
+                                <ng-template componentloader [component]="actionComponentLoader" [config]="response"></ng-template>
                             </td>
                         </tr>
                     </tbody>
