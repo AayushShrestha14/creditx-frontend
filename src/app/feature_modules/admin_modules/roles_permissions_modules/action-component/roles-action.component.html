@@ -1,0 +1,21 @@
+<div class="dropdown">
+  <nb-icon
+    class="dropdown"
+    data-bs-toggle="dropdown"
+    icon="menu-2-outline"
+  >
+  </nb-icon>
+  <!-- more-vertical-outline -->
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li (click)="onEdit()">
+        <a class="dropdown-item sb_common_font_size" href="javascript:void(0);">
+            <nb-icon icon="edit-2-outline"></nb-icon> Edit Record
+        </a>
+    </li>
+    <li (click)="onDelete()">
+        <a class="dropdown-item sb_common_font_size" href="javascript:void(0);">
+          <nb-icon icon="trash-2-outline"></nb-icon> Delete Record
+        </a>
+    </li>
+  </ul>
+</div>

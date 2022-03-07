@@ -32,51 +32,13 @@
   </div>
 </div>
 
-<hr class="hr_line"/>
-
-<div class="row">
-  <div class="col-sm-12">
-    <nb-card>
-      <nb-card-body>
-        <table class="table table-striped table-hover text-center table-sm table-bordered sb-small sb_table">
-          <thead>
-          <tr>
-            <th>S.N.</th>
-            <th>Loan Name</th>
-            <th>Loan Type</th>
-            <th>Nature of Loan</th>
-            <th>Nature of Finance Assets</th>
-            <th>Categories</th>
-            <th>Loan Tag</th>
-            <th>Renewable</th>
-            <th>Eligibility Status</th>
-            <th>Action</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>1</td>
-            <td>BUSINESS DEMAND LOAN</td>
-            <td>Fundable</td>
-            <td>Revolving</td>
-            <td>WorkingCapital</td>
-            <td>Institutional</td>
-            <td>General</td>
-            <td>Renewable</td>
-            <td>Enable</td>
-            <td>
-              <button type="button" class="btn sb_button_primary cursor action_buttons">
-                <nb-icon icon="edit-outline"></nb-icon>
-              </button>
-              <button type="button" class="btn sb_button_danger cursor action_buttons">
-                <nb-icon icon="trash-outline"></nb-icon>
-              </button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <app-paging></app-paging>
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
+<app-common-table
+  [dataTableTitle]="title"
+  [headerActionComponent]="headerActionComponentLoad"
+  [actionComponentLoader]="editComponentLoader"
+  [isContainsActionColumns]="true"
+  [responseJSONArray]="loanConfigDetails"
+  [setHeaderJSON]="setLoanConfigJSONDetails"
+  (changePageNumber)="changePage($event)"
+  [pageable]="pageable"
+></app-common-table>
