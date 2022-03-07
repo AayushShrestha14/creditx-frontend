@@ -47,18 +47,20 @@ import {
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { IconCardComponent } from '../core/common/components/icon-card/icon-card.component';
+import { ComponentloaderDirective } from '../core/directives/componentloader.directive';
+import { PipesModule } from '../core/pipes/pipes.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PagingComponent } from './components/paging/paging.component';
 import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component';
 
 const BASE_MODULES: Array<any> = [
-  CommonModule,
-  FormsModule,
   NgbModule,
   NgxPaginationModule,
+  FormsModule,
   ReactiveFormsModule,
-  HttpClientModule
+  HttpClientModule,
+  PipesModule,
 ];
 
 const NB_MODULES: Array<any> = [
@@ -98,6 +100,7 @@ const NB_MODULES: Array<any> = [
   NbBadgeModule,
   NbLayoutModule,
   NbEvaIconsModule,
+  NbCardModule
 ];
 
 const COMPONENTS: Array<any> = [
@@ -111,6 +114,10 @@ const COMPONENTS: Array<any> = [
 const ENTRY_COMPONENTS: Array<any> = [];
 
 const PIPES: Array<any> = [];
+
+const DIRECTIVES: Array<any> = [
+  ComponentloaderDirective
+];
 
 const NB_THEME_PROVIDERS = [
   NbThemeModule.forRoot(
@@ -128,9 +135,9 @@ const NB_THEME_PROVIDERS = [
 ];
 
 @NgModule({
-  imports: [...BASE_MODULES, ...NB_MODULES, RouterModule],
-  exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS, ...PIPES],
-  declarations: [...COMPONENTS, ...PIPES],
+  imports: [CommonModule, ...BASE_MODULES, ...NB_MODULES, RouterModule],
+  exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS, ...PIPES, ...DIRECTIVES],
+  declarations: [...COMPONENTS, ...PIPES, ...DIRECTIVES],
   entryComponents: [...ENTRY_COMPONENTS]
 })
 export class ThemeModule {
