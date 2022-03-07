@@ -117,6 +117,9 @@ table.table.sb_table {
     background-color:$sb_product_color;
     color: white;
   }
+  th.sb_sm_col, td.sb_sm_col {
+    width: 5%;
+}
 }
 
 .sb-small {
@@ -131,5 +134,9 @@ hr.hr_line {
 
 button.btn.sb_button_primary.action_buttons {
   margin: 0 2px;
+}
 
+a {
+  text-decoration: none !important;
+  cursor: pointer;
 }

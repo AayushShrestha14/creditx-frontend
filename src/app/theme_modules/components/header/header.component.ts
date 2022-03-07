@@ -1,14 +1,13 @@
 import { Component, OnInit, AfterContentInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbSidebarService, NbMenuService } from '@nebular/theme';
-import { filter, map } from 'rxjs';
 import { LayoutService } from 'src/app/core/utils/layout.service';
 import { LocalStorageUtil } from 'src/app/core/utils/local-storage-util';
 
 @Component({
   selector: 'app-header',
   styleUrls: ['./header.component.scss'],
-  templateUrl: './header.component.html',
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
   static LOGOUT = 'Sign Out';
@@ -20,19 +19,27 @@ export class HeaderComponent implements OnInit {
 
   userId: number | undefined;
   userFullName: string | any;
-  username: string  = '';
+  username: string = '';
   userProfilePicture: any;
 
   userMenu: Array<any> = [
-    { title: HeaderComponent.PROFILE, handler: () => {
-      
-    }},
-    { title: HeaderComponent.CHANGE_PASSWORD, handler: () => {
-
-    }},
-    { title: HeaderComponent.LOGOUT, handler: () => {
-      this.onSignOut();
-    }},
+    {
+      title: HeaderComponent.PROFILE,
+      icon: 'person-done-outline',
+      handler: () => {}
+    },
+    {
+      title: HeaderComponent.CHANGE_PASSWORD,
+      icon: 'refresh-outline',
+      handler: () => {}
+    },
+    {
+      title: HeaderComponent.LOGOUT,
+      icon: 'log-out-outline',
+      handler: () => {
+        this.onSignOut();
+      }
+    }
   ];
 
   notificationCount: any;
@@ -41,7 +48,7 @@ export class HeaderComponent implements OnInit {
     private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
     private router: Router,
-    private layoutService: LayoutService,
+    private layoutService: LayoutService
   ) {}
 
   ngOnInit() {
@@ -51,9 +58,7 @@ export class HeaderComponent implements OnInit {
     this.userFullName = localStorageDetails.username;
 
     // this.headerMenu();
-
   }
-
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
@@ -93,5 +98,4 @@ export class HeaderComponent implements OnInit {
     LocalStorageUtil.clearStorage();
     this.router.navigate(['/auth/login']);
   }
-
 }

@@ -22,7 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
     NbThemeModule.forRoot({ name: 'default' }),
     ToastrModule.forRoot(),
     ThemeModule.forRoot(),
-    CoreModule.forRoot()
+    CoreModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }

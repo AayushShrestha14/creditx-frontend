@@ -6,7 +6,9 @@
 </div> -->
 
 <div class="header-container">
-  <nav class="navbar navbar-expand-sm">
+  <nav style="
+  padding-right: 30px;
+" class="navbar navbar-expand-sm">
     <button
       class="navbar-toggler"
       type="button"
@@ -19,7 +21,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <a
             title="{{ userFullName }}"
@@ -54,7 +56,28 @@
             </ng-container>
           </ul>
         </li>
+      </ul> -->
+
+      <ul class="navbar-nav navbar-nav-right ml-lg-auto">
+        <li class="nav-item nav-profile dropdown border-0">
+          <a class="nav-link" 
+          data-bs-toggle="dropdown" id="profileDropdown" href="javascript:void(0);" data-toggle="dropdown">
+            <img class="nav-profile-img mr-2" alt="" src="assets/images/logo_bg.png" />
+            <span class="ms-2 sb_common_font_size profile-name text-center text-white">{{
+              userFullName?.length > 10
+                ? userFullName?.slice(0, 10) + '...'
+                : userFullName
+            }}</span>
+          </a>
+          <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
+            <li *ngFor="let menu of userMenu;" title="{{'Click to ' + menu?.title}}" (click)="menu.handler()">
+            <a class="dropdown-item sb_common_font_size" href="javascript:void(0);">
+              <nb-icon icon="{{menu?.icon}}" class="mr-2 text-success"></nb-icon> {{menu?.title}} </a>
+            </li>
+          </div>
+        </li>
       </ul>
+
     </div>
   </nav>
 </div>
