@@ -16,6 +16,8 @@ import { RolesActionComponent } from './roles_permissions_modules/action-compone
 import { ValuatorListComponent } from './vauator_modules/valuator-list/valuator-list.component';
 import { TableActionComponent } from './vauator_modules/action-component/table-action/table-action.component';
 import { ValuatorHeaderActionComponent } from './vauator_modules/action-component/header-action/header-action.component';
+import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuator.component';
+import { NgSelectModule } from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -30,13 +32,15 @@ import { ValuatorHeaderActionComponent } from './vauator_modules/action-componen
     HeaderActionComponent,
     ValuatorListComponent,
     TableActionComponent,
-    ValuatorHeaderActionComponent
+    ValuatorHeaderActionComponent,
+    AddValuatorComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ThemeModule.forChild(),
-    CommonResourceModule
+    CommonResourceModule,
+    NgSelectModule
   ],
   exports: [
     RolesActionComponent,

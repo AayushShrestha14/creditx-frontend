@@ -1,0 +1,227 @@
+<nb-card class="m-0" accent="primary" [nbSpinner]="spinner"
+         nbSpinnerStatus="primary"
+         nbSpinnerSize="small">
+  <nb-card-header class="sb-bg-dark">
+    <a (click)="onClose()" aria-label="Close" class="close cursor float-end"
+       data-dismiss="modal">
+      <span aria-hidden="true">×</span></a>
+    <h4 class="modal-title pull-left">{{formLabel}} Valuator</h4>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="valuatorForm">
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label for="name">Name</label>
+          <input class="form-control"
+                 formControlName="name"
+                 id="name" placeholder="Name"
+                 type="text"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.name.invalid" class="invalid-feedback">
+            Name is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label for="province">Province</label>
+           <!--<select [ngClass]="{ 'is-invalid': (submitted) && valuatorFormControl.province.errors }"
+                   class="custom-select"
+                   formControlName="province"
+                   id="province">
+             <option [ngValue]="null" hidden>Province</option>
+             <option *ngFor="let provinceVal of provinces"
+                     [ngValue]="provinceVal">
+               {{provinceVal.name}}
+             </option>
+           </select>-->
+          <select class="form-control"
+                  formControlName="province" id="province">
+            <option hidden>Province</option>
+            <option [value]="null">Province 1</option>
+            <option [value]="null">Province 2</option>
+          </select>
+          <!--<div *ngIf="(submitted) && valuatorFormControl.province.invalid"
+               class="invalid-feedback">
+            <div *ngIf="valuatorFormControl.province.errors.required">
+              Province is required
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label for="district">District</label>
+          <!--<select (change)="getMunicipalitiesById(valuatorFormControl.district.value?.id, $event)"
+                  [compareWith]="compareFn"
+                  [ngClass]="{ 'is-invalid': (submitted) && valuatorFormControl.district.errors }"
+                  class="custom-select"
+                  formControlName="district"
+                  id="district">-->
+          <select class="form-control"
+                  formControlName="district" id="district">
+            <option hidden>District</option>
+            <option>Jhapa</option>
+            <option>Morang</option>
+            <!--<option *ngFor="let districtVal of districts"
+                    [ngValue]="districtVal">
+              {{districtVal.name}}
+            </option>-->
+          </select>
+          <!--<div *ngIf="(submitted) && valuatorFormControl.district.invalid"
+               class="invalid-feedback">
+            <div *ngIf="valuatorFormControl.district.errors.required">
+              District is required!
+            </div>
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label for="municipality">Municipality</label>
+          <select class="form-control"
+                  formControlName="municipalityVdc"
+                  id="municipality">
+            <option hidden>Municipality/VDC</option>
+            <!--<option *ngFor="let municipalityVal of municipalities"
+                    [ngValue]="municipalityVal">
+              {{municipalityVal.name}}
+            </option>-->
+            <option>Damak</option>
+            <option>Pathari</option>
+            <option>Jhapa</option>
+          </select>
+          <!--<div *ngIf="(submitted) && valuatorFormControl.municipalityVdc.invalid"
+               class="invalid-feedback">
+            <div *ngIf="valuatorFormControl.municipalityVdc.errors.required">
+              Municipality Vdc is required!
+            </div>
+          </div>-->
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label for="street_name">Street Name</label>
+          <input class="form-control"
+                 formControlName="streetName" id="street_name"
+                 name="streetName"
+                 placeholder="Street Name"
+                 type="text"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.streetName.invalid" class="invalid-feedback">
+            Street is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label for="ward_number">Ward Number</label>
+          <input class="form-control"
+                 formControlName="wardNumber" id="ward_number"
+                 name="ward"
+                 placeholder="Ward Number"
+                 type="number"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.wardNumber.invalid" class="invalid-feedback">
+            Ward number is required
+          </div>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="contactNo">Contact Number</label>
+          <input class="form-control"
+                 formControlName="contactNo"
+                 id="contactNo" name="contactNo" placeholder="Contact Number"
+                 type="number"/>
+          <!--<div *ngIf="valuatorFormControl.contactNo.invalid && submitted" class="invalid-feedback">
+            Contact is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label for="name">Email</label>
+          <input class="form-control"
+                 formControlName="email"
+                 id="email" placeholder="Email"
+                 type="text"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.email.invalid" class="invalid-feedback">
+            Email is required
+          </div>-->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label>Valuating Type</label>
+          <select formControlName="valuatingField" class="form-control">
+            <!--[placeholder]="placeHolderValuatingType">-->
+            <!--<option *ngFor="let valuatingField of valuatingFieldEnum.values()"
+                       [value]="valuatingField">
+              {{valuatingField}}
+            </option>-->
+            <option>Land</option>
+            <option>Land And Building</option>
+          </select>
+          <!--<div *ngIf="valuatorFormControl.valuatingField.invalid && submitted" class="invalid-feedback">
+            Valuating Type is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label>Bank Associate Date</label>
+          <input nbInput fullWidth
+                 class="form-control" formControlName="bankAssociateDate"
+                 type="date">
+          <!--<div *ngIf="valuatorFormControl.bankAssociateDate.invalid && submitted" class="invalid-feedback">
+            Bank Associate Date is required!
+          </div>-->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label for="name">Minimum Amount</label>
+          <input class="form-control"
+                 formControlName="minAmount"
+                 id="minAmount" placeholder="Minimum Amount"
+                 type="number"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.minAmount.invalid" class="invalid-feedback">
+            Minimum Amount is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label for="name">Maximum Amount</label>
+          <input class="form-control"
+                 formControlName="maxAmount"
+                 id="maxAmount" placeholder="Maximum Amount"
+                 type="number"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.maxAmount.invalid" class="invalid-feedback">
+            Maximum Amount is required and its value should be greater than Minimum Amount
+          </div>-->
+        </div>
+
+        <div class="col-md-12 py-2">
+          <label>Branches</label>
+          <select bindLabel="name"
+                  formControlName="branch" class="form-control">
+            <!--[placeholder]="placeHolderBranchSelect">-->
+            <ng-template let-index="index" let-item="item" let-search="searchTerm" ng-option-tmp>
+              {{item['name']}} | <strong>{{item['branchCode']}}</strong>
+            </ng-template>
+          </select>
+          <!--<div *ngIf="valuatorFormControl.branch.invalid && submitted" class="sb-small py-2 text-danger">
+            Branch is required!
+          </div>-->
+        </div>
+        <div class="col-md-12 py-2">
+          <!--<nb-checkbox (checkedChange)="checkAllBranch($event)" [checked]="this.model.isAllBranch">-->
+          <nb-checkbox>
+            Add All Branch
+          </nb-checkbox>
+        </div>
+      </div>
+    </form>
+    <nb-card-footer class="float-end">
+      <button nbButton (click)="onSubmit()"
+              [disabled]="spinner" status="primary">
+        <em class="fa fa-save"></em>
+      </button>
+    </nb-card-footer>
+  </nb-card-body>
+</nb-card>
