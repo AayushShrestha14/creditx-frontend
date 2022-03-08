@@ -38,8 +38,13 @@ export class FeatureModulesComponent implements OnInit {
       link: '/home/admin_modules/roles_and_permissions',
       icon: 'person-done-outline'
     };
+    const loanConfiguration = {
+      title: 'Loan Configuration',
+      link: '/home/admin_modules/loan_configuration',
+      icon: 'person-done-outline'
+    }
 
-    this.menus.push(dashboard, customer, branch, valuator, rolesAndPermissions);
+    this.menus.push(dashboard, customer, branch, valuator, rolesAndPermissions,loanConfiguration);
   }
 
 
