@@ -23,7 +23,7 @@ export class RolesPermissionsListComponent implements OnInit {
 
   pageable: Pageable = new Pageable();
 
-  setBankJSONDetails: TableColumnSetting[] = [
+  setResponseHeaderJSON: TableColumnSetting[] = [
     {
       primaryKey: 'roleName',
       header: 'Role Name',
