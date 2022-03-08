@@ -13,6 +13,9 @@ import { LoanConfigurationHeaderActionComponent } from './loan-configuration_mod
 import { AddLoanConfigurationComponent } from './loan-configuration_modules/add-loan-configuration/add-loan-configuration.component';
 
 import { RolesActionComponent } from './roles_permissions_modules/action-component/table-action/roles-action.component';
+import { ValuatorListComponent } from './vauator_modules/valuator-list/valuator-list.component';
+import { TableActionComponent } from './vauator_modules/action-component/table-action/table-action.component';
+import { ValuatorHeaderActionComponent } from './vauator_modules/action-component/header-action/header-action.component';
 
 
 @NgModule({
@@ -25,6 +28,10 @@ import { RolesActionComponent } from './roles_permissions_modules/action-compone
     LoanConfigurationActionComponent,
     LoanConfigurationHeaderActionComponent,
     AddLoanConfigurationComponent,
+    HeaderActionComponent,
+    ValuatorListComponent,
+    TableActionComponent,
+    ValuatorHeaderActionComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +41,9 @@ import { RolesActionComponent } from './roles_permissions_modules/action-compone
   ],
   exports: [
     RolesActionComponent,
-    HeaderActionComponent
+    HeaderActionComponent,
+    TableActionComponent,
+    ValuatorHeaderActionComponent,
   ]
 })
 export class AdminModule { }
