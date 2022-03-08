@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header-action',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValuatorHeaderActionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
-    this.onNewAdd();
   }
   onNewAdd() {
-    console.log('on new data added!!!');
+   this.router.navigate(['/home/admin_modules/valuator/add_valuator'])
   }
 }
