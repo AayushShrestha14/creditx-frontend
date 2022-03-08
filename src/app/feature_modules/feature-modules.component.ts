@@ -28,11 +28,21 @@ export class FeatureModulesComponent implements OnInit {
       link: '/home/admin_modules/branch',
       icon: 'person-done-outline'
     };
-    const rolesAndPermissions = {
-      title: 'Roles & Permissions',
-      link: '/home/admin_modules/roles_and_permissions',
+    const valuator = {
+      title: 'Valuator',
+      link: '/home/admin_modules/valuator',
       icon: 'person-done-outline'
     };
+    const rolesAndPermissions = {
+      title: 'Roles & Permissions',
+      link: '/home/admin_modules/roles_and_permissions/role-config',
+      icon: 'person-done-outline'
+    };
+    const loanConfiguration = {
+      title: 'Loan Configuration',
+      link: '/home/admin_modules/loan_configuration',
+      icon: 'person-done-outline'
+    }
     const document = {
       title: 'Document',
       link: '/home/admin_modules/document',
@@ -41,6 +51,7 @@ export class FeatureModulesComponent implements OnInit {
 
 
     this.menus.push(dashboard, customer, branch, rolesAndPermissions, document);
+    this.menus.push(dashboard, customer, branch, valuator, rolesAndPermissions,loanConfiguration);
   }
 
 

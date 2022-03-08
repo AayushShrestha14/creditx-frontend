@@ -4,9 +4,7 @@
       <div class="col-md-4 col-sm-6 col-xs-12">
         <app-icon-card
           detail="{{ 'roleCount' }}"
-          title="Total Roles"
-          type="info"
-        >
+          title="Total Roles" type="info">
           <nb-icon icon="checkmark-square-outline"></nb-icon>
         </app-icon-card>
       </div>
@@ -14,9 +12,7 @@
       <div class="col-md-4 col-sm-6 col-xs-12">
         <app-icon-card
           detail="{{ 'activeCount' }}"
-          title="Active"
-          type="success"
-        >
+          title="Active" type="success">
           <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
         </app-icon-card>
       </div>
@@ -24,23 +20,20 @@
       <div class="col-md-4 col-sm-6 col-xs-12">
         <app-icon-card
           detail="{{ 'inactiveCount' }}"
-          title="Inactive"
-          type="warning"
-        >
+          title="Inactive" type="warning">
           <nb-icon icon="close-circle-outline"></nb-icon>
         </app-icon-card>
       </div>
     </div>
   </div>
 </div>
-
 <app-common-table
   [dataTableTitle]="title"
   [headerActionComponent]="headerActionComponentLoad"
   [actionComponentLoader]="editComponentLoader"
   [isContainsActionColumns]="true"
-  [responseJSONArray]="rolesPermissionsResponse"
-  [setHeaderJSON]="setResponseHeaderJSON"
+  [responseJSONArray]="valuatorResponse"
+  [setHeaderJSON]="setValuatorJSONDetails"
   (changePageNumber)="changePage($event)"
   [pageable]="pageable"
 ></app-common-table>

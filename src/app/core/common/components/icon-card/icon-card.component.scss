@@ -46,7 +46,6 @@
 
     &.off {
       color: nb-theme(text-hint-color);
-
       .status,
       .title,
       .icon {
@@ -72,15 +71,9 @@
       margin-left: 1.5vw;
     }
 
-    .title {
-      margin: 0;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .status {
-      text-transform: uppercase;
-      font-size: 1vw;
-    }
+    // .status {
+    //   text-transform: uppercase;
+    //   font-size: 1vw;
+    // }
   }
 }

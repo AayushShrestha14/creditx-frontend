@@ -1,0 +1,99 @@
+<nb-card>
+  <nb-card-header class="sb-bg-dark">
+    <h2 class="text-white">Add Loan Configuration
+      <button class="close cursor pull-right text-white">×</button>
+    </h2>
+  </nb-card-header>
+  <nb-card-body>
+    <form name="form">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label><h6>Loan Scheme</h6></label>
+              <input type="hidden" class="form-control"  name="id"
+                     placeholder="id">
+              <input type="text" class="form-control" name="name" required placeholder="Loan Scheme">
+            </div>
+          </div>
+          <div class="col-md-6 row">
+            <div class="col-md-12 form-group">
+              <label for="fundable"><h6>Loan Type</h6></label>
+              <div class="row ml-2">
+                <nb-radio-group class="col-md-12 d-contents form-control" id="fundable"
+                                name="fundable">
+                  <nb-radio class="form-group" [value]=true>Fundable
+                  </nb-radio>
+                  <nb-radio class="form-group" [value]=false>Non-Fundable
+                  </nb-radio>
+                </nb-radio-group>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 row">
+            <div class="col-md-9 form-group">
+              <label><h6>Nature of Loan</h6></label>
+              <div class="row ml-2">
+                <nb-radio-group name="loanNature" class="d-inline-flex">
+                  <nb-radio>
+<!--                    [value]="option.value">-->
+<!--                    {{ option.value }}-->
+                  </nb-radio>
+                </nb-radio-group>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 row">
+            <div class="col-md-9 form-group">
+              <label><h6>Nature of Assets financed</h6></label>
+              <div class="row ml-2">
+                <nb-radio-group name="financedAssets" class="d-inline-flex">
+<!--                                [(ngModel)]="loanConfig.financedAssets"-->
+                  <nb-radio>
+<!--                    *ngFor="let option of financedAssets"-->
+<!--                    [value]="option.value">-->
+<!--                    {{ option.value }}-->
+                  </nb-radio>
+                </nb-radio-group>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group>">
+              <label><h6>Collateral Requirement (In %)</h6></label>
+              <input type="text" class="form-control" name="collateralrequirement" required
+                     placeholder="e.g. 13">
+<!--                     [(ngModel)]="loanConfig.collateralRequirement" #collateralRequirement="ngModel"-->
+<!--                     [ngClass]="{ 'is-invalid': loanConfigForm.submitted && collateralRequirement.invalid }">-->
+              <div class="invalid-feedback">
+<!--                   *ngIf="loanConfigForm.submitted && collateralRequirement.invalid">-->
+<!--                <div *ngIf="collateralRequirement.errors.required"></div>-->
+<!--                <div *ngIf="collateralRequirement.invalid && loanConfig.collateralRequirement !== undefined &&loanConfig.collateralRequirement !== null">-->
+                <div>
+                Collateral Requirement is required!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label><h6>Loan Short Name</h6></label>
+              <input type="text" class="form-control" name="shortNames" required
+                     placeholder="e.g. WCL for Working capital Loan">
+<!--                     [(ngModel)]="loanConfig.shortNames" #shortNames="ngModel"-->
+<!--                     [ngClass]="{ 'is-invalid': loanConfigForm.submitted && shortNames.invalid }">-->
+<!--              <div class="invalid-feedback" *ngIf="loanConfigForm.submitted && shortNames.invalid">-->
+<!--                <div *ngIf="shortNames.errors.required"></div>-->
+<!--                <div *ngIf="shortNames.invalid && loanConfig.shortNames !== undefined &&loanConfig.shortNames !== null">-->
+               <div>
+                <div>
+                Short Name is required!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
