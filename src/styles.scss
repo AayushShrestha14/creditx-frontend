@@ -123,7 +123,7 @@ table.table.sb_table {
 }
 }
 
-.sb-small {
+.sb-small, .sb_counter_title {
   font-size: $sb_common_font_size;
 }
 
@@ -133,11 +133,22 @@ hr.hr_line {
 
 // for action icons
 
-button.btn.sb_button_primary.action_buttons {
+button.btn.sb_button_primary.action_buttons,
+button.btn.sb_button_secondary.action_buttons {
   margin: 0 2px;
+  cursor: pointer;
 }
 
 a {
   text-decoration: none !important;
   cursor: pointer;
+}
+
+label.sb_label {
+  font-weight: 500;
+  font-size: $sb_small_font_size;
+}
+
+.ng-select.form-selection {
+  font-size: $sb_small_font_size !important;
 }

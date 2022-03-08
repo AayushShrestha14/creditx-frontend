@@ -35,7 +35,7 @@ export class FeatureModulesComponent implements OnInit {
     };
     const rolesAndPermissions = {
       title: 'Roles & Permissions',
-      link: '/home/admin_modules/roles_and_permissions',
+      link: '/home/admin_modules/roles_and_permissions/role-config',
       icon: 'person-done-outline'
     };
     const loanConfiguration = {
