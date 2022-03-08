@@ -140,10 +140,10 @@ export abstract class BaseApiService<T> {
   }
 
   public detail(id: any, showMessage?: boolean): Observable<any> {
-    const api = `${this.getApi()}/detail`;
+    const api = `${this.getApi()}/${id}`;
     const req = ApiUtils.getRequest(api);
 
-    return this.httpClient.post<T>(req.url, { uriId: id }).pipe(
+    return this.httpClient.get<T>(req.url).pipe(
       map((res: T) => {
         if (showMessage) {
           this.sharedService.getHttpSuccessResponseMessage(res);
@@ -398,6 +398,25 @@ export abstract class BaseApiService<T> {
 
   public getCalendar(showMessage?: boolean): Observable<any> {
     const api = 'v1/calendar';
+    const req = ApiUtils.getRequest(api);
+
+    return this.httpClient.get<T>(req.url).pipe(
+      map((res: T) => {
+        if (showMessage) {
+          this.sharedService.getHttpSuccessResponseMessage(res);
+        }
+
+        return res;
+      }),
+      catchError((error) => {
+        this.sharedService.getServerErrorMessage(error.error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  public allActiveDataList(showMessage?: boolean): Observable<any> {
+    const api = `${this.getApi()}/active`;
     const req = ApiUtils.getRequest(api);
 
     return this.httpClient.get<T>(req.url).pipe(

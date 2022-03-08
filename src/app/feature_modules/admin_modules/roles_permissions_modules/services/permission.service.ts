@@ -6,9 +6,8 @@ import { SharedService } from 'src/app/core/common/services/shared.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RolesPermissionService extends BaseApiService<any> {
-
-  static API = 'admin/roleRightPermission';
+export class PermissionService extends BaseApiService<any> {
+  static API = 'admin/permission';
 
   constructor(
     override readonly httpClient: HttpClient,
@@ -18,7 +17,6 @@ export class RolesPermissionService extends BaseApiService<any> {
   }
 
   protected getApi(): string {
-    return RolesPermissionService.API;
+    return PermissionService.API;
   }
-
 }

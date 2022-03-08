@@ -4,7 +4,7 @@ import { Pageable } from 'src/app/core/common/services/common-pageable';
 import { HeaderActionComponent } from '../action-component/header-action/header-action.component';
 import { RolesActionComponent } from '../action-component/table-action/roles-action.component';
 import { RolesPermissionsResponse } from '../models/roles-permission-response.model';
-import { RolesPermissionService } from '../services/roles-permission.service';
+import { RolesService } from '../services/roles.service';
 
 @Component({
   selector: 'app-roles-permissions-list',
@@ -23,7 +23,7 @@ export class RolesPermissionsListComponent implements OnInit {
 
   pageable: Pageable = new Pageable();
 
-  setBankJSONDetails: TableColumnSetting[] = [
+  setResponseHeaderJSON: TableColumnSetting[] = [
     {
       primaryKey: 'roleName',
       header: 'Role Name',
@@ -53,7 +53,7 @@ export class RolesPermissionsListComponent implements OnInit {
   rolesPermissionsResponse: Array<RolesPermissionsResponse> = new Array<RolesPermissionsResponse>();
 
   constructor(
-    private rolesPermissionService: RolesPermissionService
+    private rolesService: RolesService,
   ) { }
 
   ngOnInit(): void {
@@ -61,7 +61,7 @@ export class RolesPermissionsListComponent implements OnInit {
   }
 
   allRoleList() {
-    this.rolesPermissionService.getAll().subscribe({
+    this.rolesService.getAll().subscribe({
       next: (response) => {
         console.log(response);
         this.rolesPermissionsResponse = response?.detail;
