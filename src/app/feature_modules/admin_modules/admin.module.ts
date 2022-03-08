@@ -16,8 +16,9 @@ import { RolesActionComponent } from './roles_permissions_modules/action-compone
 import { ValuatorListComponent } from './vauator_modules/valuator-list/valuator-list.component';
 import { TableActionComponent } from './vauator_modules/action-component/table-action/table-action.component';
 import { ValuatorHeaderActionComponent } from './vauator_modules/action-component/header-action/header-action.component';
-import {UserComponent} from "./users_modules/user-list/user.component";
+import { UserComponent} from "./users_modules/user-list/user.component";
 import { UserFormComponent } from './users_modules/user-form/user-form.component';
+import { PermissionConfigureComponent } from "./roles_permissions_modules/permission-configure/permission-configure.component";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { UserFormComponent } from './users_modules/user-form/user-form.component
     ValuatorListComponent,
     TableActionComponent,
     ValuatorHeaderActionComponent,
-    UserFormComponent
+    UserFormComponent,
+    PermissionConfigureComponent
   ],
   imports: [
     CommonModule,

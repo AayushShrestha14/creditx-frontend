@@ -7,12 +7,12 @@
     <div class="row form-group">
       <div class="col-md-6">
         <label for="authorities"><b>Role</b></label>
-        <select class="form-control" id="authorities" name="authorities" required>
-          <option hidden>Role</option>
-          <option>Name 1</option>
-          <option>Name 2</option>
-          <option>Name 3</option>
-        </select>
+        <ng-select class="form-control" id="authorities" name="authorities" required>
+          <ng-option hidden>Role</ng-option>
+          <ng-option>Name 1</ng-option>
+          <ng-option>Name 2</ng-option>
+          <ng-option>Name 3</ng-option>
+        </ng-select>
         <div>
           <div hidden>Role is required</div>
         </div>
@@ -48,9 +48,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label><b>Branch</b></label>
-          <select name="branch" placeholder="Select Branches"></select>
-          <select name="branch" placeholder="Select Branches">
-          </select>
+          <ng-select name="branch" placeholder="Select Branches"></ng-select>
         </div>
       </div>
     </div>
