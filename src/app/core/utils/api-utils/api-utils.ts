@@ -4,7 +4,7 @@ import { ApiConfig } from './api-config';
 
 export class ApiUtils {
   public static getRequest(api: string) {
-    const fullApi = `${ApiConfig.baseApiUrl}/${api}`;
+    const fullApi = `${ApiConfig.baseApiEndPoint}/${api}`;
     return {
       url: fullApi,
       header: new HttpHeaders({
@@ -14,7 +14,7 @@ export class ApiUtils {
   }
 
   public static getRequestWithFileSupport(api: string) {
-    const fullApi = `${ApiConfig.baseApiUrl}/${api}`;
+    const fullApi = `${ApiConfig.baseApiEndPoint}/${api}`;
     return {
       url: fullApi,
       header: new HttpHeaders({

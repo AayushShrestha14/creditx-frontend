@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {RolesActionComponent} from "../../roles_permissions_modules/action-component/roles-action.component";
-import {HeaderActionComponent} from "../../roles_permissions_modules/action-component/header-action/header-action.component";
 import {Pageable} from "../../../../core/common/services/common-pageable";
 import {TableColumnSetting} from "../../../../common_resource_modules/models/table-column-setting.model";
 import {LoanConfigurationActionComponent} from "../action-component/loan-configuration-action.component";
 import {LoanConfigurationHeaderActionComponent} from "../action-component/loan-configuration-header-action/loan-configuration-header-action.component";
+import {LoanConfigurationResponse} from "../models/loan-configuration-response-model";
+import {LoanConfigurationService} from "../services/loan-configuration.service";
 
 @Component({
   selector: 'app-loan-configuration-list',
@@ -20,6 +20,8 @@ export class LoanConfigurationListComponent implements OnInit {
   headerActionComponentLoad = LoanConfigurationHeaderActionComponent;
 
   page: number = 1;
+
+  searchObj: any ={};
 
   pageable: Pageable = new Pageable();
 
@@ -56,30 +58,36 @@ export class LoanConfigurationListComponent implements OnInit {
       header: 'Eligibility Status',
     }
   ];
-  loanConfigDetails = [
-    {
-      id: 5,
-      loanName: 'Business Overdraft',
-      loanType: 'Fundable',
-      natureOfLoan: 'Revolving',
-      natureOfFinanceAssets: 'WorkingCapital',
-      categories: 'Institution',
-      loanTag: 'General',
-      renewable: 'Renewable',
-      eligibilityStatus: 'Enable',
-    },
-  ]
 
-  constructor() { }
+  loanConfigDetails: Array<LoanConfigurationResponse> = new Array<LoanConfigurationResponse>();
 
-  ngOnInit(): void {
-    this.listAllLoanConfigs();
+  static listAllLoanConfigs(other: LoanConfigurationListComponent) {
+    other.loanConfigurationService.getPaginationWithSearchObject(other.searchObj,other.page,10).subscribe({
+      next: (response) => {
+        console.log(response);
+        other.loanConfigDetails = response.detail;
+
+      },
+      error: (error) =>{},
+      complete: () => {}
+    });
   }
 
-  listAllLoanConfigs() {}
+  constructor(
+    private loanConfigurationService: LoanConfigurationService
+  ) { }
+
+
+
+  ngOnInit(): void {
+    LoanConfigurationListComponent.listAllLoanConfigs(this);
+  }
+
+
 
   changePage(page: number) {
     this.page = page;
+    LoanConfigurationListComponent.listAllLoanConfigs(this);
   }
 
 }
