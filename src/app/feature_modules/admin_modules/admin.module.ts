@@ -7,17 +7,17 @@ import { RolesPermissionsListComponent } from './roles_permissions_modules/roles
 import { ThemeModule } from 'src/app/theme_modules/theme.module';
 import { CommonResourceModule } from 'src/app/common_resource_modules/common-resource.module';
 import { HeaderActionComponent } from './roles_permissions_modules/action-component/header-action/header-action.component';
-import {LoanConfigurationListComponent} from "./loan-configuration_modules/loan-configuration-list/loan-configuration-list.component";
 import { LoanConfigurationActionComponent } from './loan-configuration_modules/action-component/loan-configuration-action.component';
 import { LoanConfigurationHeaderActionComponent } from './loan-configuration_modules/action-component/loan-configuration-header-action/loan-configuration-header-action.component';
 import { AddLoanConfigurationComponent } from './loan-configuration_modules/add-loan-configuration/add-loan-configuration.component';
 
 import { RolesActionComponent } from './roles_permissions_modules/action-component/table-action/roles-action.component';
+import { PermissionConfigureComponent } from './roles_permissions_modules/permission-configure/permission-configure.component';
 import { ValuatorListComponent } from './vauator_modules/valuator-list/valuator-list.component';
 import { TableActionComponent } from './vauator_modules/action-component/table-action/table-action.component';
 import { ValuatorHeaderActionComponent } from './vauator_modules/action-component/header-action/header-action.component';
+import { LoanConfigurationListComponent } from './loan-configuration_modules/loan-configuration-list/loan-configuration-list.component';
 import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuator.component';
-import { NgSelectModule } from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -25,11 +25,12 @@ import { NgSelectModule } from "@ng-select/ng-select";
     BranchComponent,
     RolesPermissionsListComponent,
     RolesActionComponent,
+    HeaderActionComponent,
+    PermissionConfigureComponent,
     LoanConfigurationListComponent,
     LoanConfigurationActionComponent,
     LoanConfigurationHeaderActionComponent,
     AddLoanConfigurationComponent,
-    HeaderActionComponent,
     ValuatorListComponent,
     TableActionComponent,
     ValuatorHeaderActionComponent,
@@ -39,14 +40,13 @@ import { NgSelectModule } from "@ng-select/ng-select";
     CommonModule,
     AdminRoutingModule,
     ThemeModule.forChild(),
-    CommonResourceModule,
-    NgSelectModule
+    CommonResourceModule
   ],
   exports: [
     RolesActionComponent,
     HeaderActionComponent,
     TableActionComponent,
-    ValuatorHeaderActionComponent,
+    ValuatorHeaderActionComponent
   ]
 })
-export class AdminModule { }
+export class AdminModule {}
