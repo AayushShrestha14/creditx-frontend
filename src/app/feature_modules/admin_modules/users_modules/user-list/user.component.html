@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <app-icon-card detail="{{ '22' }}" title="Users" type="info">
+          <nb-icon icon="people" style="font-size: 2rem"></nb-icon>
+        </app-icon-card>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <app-icon-card
+          detail="{{ '13' }}"
+          title="Active"
+          type="success"
+        >
+          <nb-icon icon="person" style="font-size: 2rem"></nb-icon>
+        </app-icon-card>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <app-icon-card
+          detail="{{ '9' }}"
+          title="Inactive"
+          type="warning"
+        >
+          <nb-icon icon="person-delete" style="font-size: 2rem"></nb-icon>
+        </app-icon-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-sm-6">
+        <button type="button" class="btn filter_btn float-start" (click)="filterFlag = !filterFlag">
+          <nb-icon icon="funnel" style="font-size: 1.2em"></nb-icon>
+          FILTER
+        </button>
+      </div>
+      <div class="col-sm-6">
+        <button type="button" class="btn sb_button_primary cursor float-end" (click)="add()">
+          <nb-icon icon="plus-outline"></nb-icon>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div id="searchModel" class="col-sm-12" [ngbCollapse]="filterFlag">
+        <form action="javascript:void(0)" [formGroup]="filterForm">
+          <div class="row py-3">
+            <div class="form-group col-md-3">
+              <input type="text" class="form-control" id="name" placeholder="name">
+            </div>
+            <div class="form-group col-md-3">
+              <select id="branch" class="custom-selector">
+                <option selected>Branch</option>
+                <option>Branch A</option>
+                <option>Branch B</option>
+                <option>Branch C</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <select id="role" class="custom-selector">
+                <option selected>Role</option>
+                <option>Role 1</option>
+                <option>Role 2</option>
+                <option>Role 3</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <select id="status" class="custom-selector">
+                <option selected>Status</option>
+                <option>All Status</option>
+                <option>Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <button class="btn search_btn cursor">SEARCH</button>
+            <button class="btn clear_btn cursor">CLEAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="hr_line"/>
+
+<div class="row">
+  <div class="col-sm-12">
+    <nb-card>
+      <nb-card-body>
+        <table class="table table-striped table-hover text-center table-sm table-bordered sb-small sb_table">
+          <thead>
+          <tr>
+            <th>S.N.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>User Name</th>
+            <th>Role</th>
+            <th>Branch</th>
+            <th>Status</th>
+            <th>Signature</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of userList; let i=index;">
+            <td>{{ i + 1 }}</td>
+            <td>Niresh Shrestha</td>
+            <td>niresh.shrestha@sbsolutionsnepal.com</td>
+            <td>nire</td>
+            <td>{{ data?.roleType}}</td>
+            <td>All Branch</td>
+            <td>{{ data?.status}}</td>
+            <td></td>
+            <td>
+              <button type="button" class="btn sb_button_primary cursor action_buttons">
+                <nb-icon icon="edit-outline"></nb-icon>
+              </button>
+              <button type="button" class="btn sb_button_danger cursor action_buttons">
+                <nb-icon icon="trash-outline"></nb-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <app-paging></app-paging>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { RolesPermissionsListComponent } from './roles_permissions_modules/roles
 import {ValuatorListComponent} from "./vauator_modules/valuator-list/valuator-list.component";
 import {LoanConfigurationListComponent} from "./loan-configuration_modules/loan-configuration-list/loan-configuration-list.component";
 import {AddLoanConfigurationComponent} from "./loan-configuration_modules/add-loan-configuration/add-loan-configuration.component";
+import {UserComponent} from "./users_modules/user-list/user.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'roles_and_permissions',
     component: RolesPermissionsListComponent,
+  },
+  {
+    path: 'users',
+    component: UserComponent
   },
   {
     path: 'valuator',

@@ -16,6 +16,8 @@ import { RolesActionComponent } from './roles_permissions_modules/action-compone
 import { ValuatorListComponent } from './vauator_modules/valuator-list/valuator-list.component';
 import { TableActionComponent } from './vauator_modules/action-component/table-action/table-action.component';
 import { ValuatorHeaderActionComponent } from './vauator_modules/action-component/header-action/header-action.component';
+import {UserComponent} from "./users_modules/user-list/user.component";
+import { UserFormComponent } from './users_modules/user-form/user-form.component';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { ValuatorHeaderActionComponent } from './vauator_modules/action-componen
     BranchComponent,
     RolesPermissionsListComponent,
     RolesActionComponent,
+    UserComponent,
     LoanConfigurationListComponent,
     LoanConfigurationActionComponent,
     LoanConfigurationHeaderActionComponent,
@@ -30,7 +33,8 @@ import { ValuatorHeaderActionComponent } from './vauator_modules/action-componen
     HeaderActionComponent,
     ValuatorListComponent,
     TableActionComponent,
-    ValuatorHeaderActionComponent
+    ValuatorHeaderActionComponent,
+    UserFormComponent
   ],
   imports: [
     CommonModule,
