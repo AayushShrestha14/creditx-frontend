@@ -11,12 +11,17 @@ import {ValuatorResponse} from "../models/valuator-response.model";
 })
 export class AddValuatorComponent implements OnInit {
   @Input() model: ValuatorResponse = new ValuatorResponse();
-  spinner = false;
   submitted = false;
-  formLabel: string = 'ADD';
-  placeHolderValuatingType: string = 'Select Valuating Type';
-  placeHolderBranchSelect: string = 'Select Branches';
+  formLabel: string = 'ADD Valuator';
   valuatorForm: FormGroup = new FormGroup({});
+  provinces : Array<any> = new Array<any>();
+  districts : Array<any> = new Array<any>();
+  municipalities : Array<any> = new Array<any>();
+  valuatingFieldEnum = [
+    {value : 'Land'},
+    {value : 'Vehicle'},
+    {value : 'Land & Building'}
+  ];
 
   constructor(
     private activeModal: NgbModal,
@@ -46,47 +51,6 @@ export class AddValuatorComponent implements OnInit {
       status: [undefined],
       state: [undefined],
       isAllBranch: [undefined],
-     /* name: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.name)) ? undefined :
-        this.model.name, [Validators.required]],
-      contactNo: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.contactNo)) ? undefined :
-        this.model.contactNo, [Validators.required]],
-      email: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.email)) ? undefined :
-        this.model.email, [Validators.required, Validators.email]],
-      province: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.province)) ? undefined :
-        this.model.province, [Validators.required]],
-      district: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.district)) ? undefined :
-        this.model.district, [Validators.required]],
-      municipalityVdc: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.municipalityVdc)) ? undefined :
-        this.model.municipalityVdc, [Validators.required]],
-      streetName: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.streetName)) ? undefined :
-        this.model.streetName, [Validators.required]],
-      wardNumber: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.wardNumber)) ? undefined :
-        this.model.wardNumber, [Validators.required, Validators.min(0)]],
-      valuatingField: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.valuatingField)) ? undefined :
-        this.model.valuatingField, [Validators.required]],
-      bankAssociateDate: [undefined],
-      minAmount: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.minAmount)) ? undefined :
-        this.model.minAmount, [Validators.required, Validators.min(0)]],
-      maxAmount: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.maxAmount)) ? undefined :
-        this.model.maxAmount, [Validators.required, Validators.min(0)]],
-      branch: [undefined, [Validators.required]],
-      status: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.status)) ? undefined :
-        this.model.status],
-      state: [(ObjectUtil.isEmpty(this.model)
-        || ObjectUtil.isEmpty(this.model.state)) ? undefined :
-        this.model.state],*/
     });
   }
 
