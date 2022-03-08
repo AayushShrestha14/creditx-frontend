@@ -1,21 +1,21 @@
 <div class="row">
     <div class="col-md-4 col-sm-6 col-xs-12">
-        <a routerLink="/home/admin/roleList">
+        <a routerLink="/home/admin_modules/roles_and_permissions/list">
             <app-icon-card title="Roles" type="info" detail="{{'roleCount'}}">
-                <i class="fas fa-user-alt"></i>
+                <nb-icon icon="checkmark-square-outline"></nb-icon>
             </app-icon-card>
         </a>
     </div>
 
     <div class="col-md-4 col-sm-6 col-xs-12">
         <app-icon-card title="Active" type="success" detail="{{'activeCount'}}">
-            <i class="fas fa-user-circle"></i>
+            <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
         </app-icon-card>
     </div>
 
     <div class="col-md-4 col-sm-6 col-xs-12">
         <app-icon-card title="Inactive" type="warning" detail="{{'inactiveCount'}}">
-            <i class="far fa-user-circle"></i>
+            <nb-icon icon="close-circle-outline"></nb-icon>
         </app-icon-card>
     </div>
 </div>
@@ -27,7 +27,9 @@
                 <div class="row">
                     <div class="col-sm-9">
                         <p>
+                            <small>
                             Note: Changing permission for a role(s) will logout all the associated user(s) with respective role(s).
+                            </small>
                         </p>
                     </div>
                     <div class="col-md-3 d-flex justify-content-end">

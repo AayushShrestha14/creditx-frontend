@@ -16,8 +16,7 @@ const routes: Routes = [
     path: 'roles_and_permissions',
     children: [
       {
-        path: '',
-        component: PermissionConfigureComponent,
+        path: '', redirectTo: 'role-config', pathMatch: 'full' 
       },
       {
         path: 'role-config',
