@@ -23,7 +23,6 @@ import { ValuatorHeaderActionComponent } from './vauator_modules/action-componen
     BranchComponent,
     RolesPermissionsListComponent,
     RolesActionComponent,
-    HeaderActionComponent,
     LoanConfigurationListComponent,
     LoanConfigurationActionComponent,
     LoanConfigurationHeaderActionComponent,

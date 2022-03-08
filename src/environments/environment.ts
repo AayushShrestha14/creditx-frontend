@@ -7,7 +7,7 @@ export const environment = {
   appConfigStorageKey: "QP'`0t=Wf_(yB?ni^(*rv0gB].ck$s@z(/SB_PK",
   appConfigName: '@sb_product_uab',
   appName: 'uab',
-  baseApiUrl: 'http://10.10.10.254:8086',
+  baseApiUrl: 'http://10.10.10.82:8086',
   productName: 'uab'
 };
 
