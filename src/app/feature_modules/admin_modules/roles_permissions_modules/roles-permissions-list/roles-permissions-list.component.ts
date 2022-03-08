@@ -12,9 +12,9 @@ import { RolesService } from '../services/roles.service';
   styleUrls: ['./roles-permissions-list.component.scss']
 })
 export class RolesPermissionsListComponent implements OnInit {
-  
+
   title: string = 'All Roles & Permissions';
-  
+
   editComponentLoader = RolesActionComponent;
 
   headerActionComponentLoad = HeaderActionComponent;
@@ -22,7 +22,7 @@ export class RolesPermissionsListComponent implements OnInit {
   page: number = 1;
 
   pageable: Pageable = new Pageable();
-  
+
   setBankJSONDetails: TableColumnSetting[] = [
     {
       primaryKey: 'roleName',
@@ -75,5 +75,5 @@ export class RolesPermissionsListComponent implements OnInit {
     this.page = page;
     this.allRoleList();
   }
-  
+
 }
