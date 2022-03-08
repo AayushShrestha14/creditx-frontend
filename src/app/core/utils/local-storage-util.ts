@@ -62,4 +62,5 @@ export class LocalStorage {
 
   roles: AccessRoles[] = Array<AccessRoles>();
   menus: NbMenuItem[] = Array<NbMenuItem>();
+  productMode: string | undefined;
 }
