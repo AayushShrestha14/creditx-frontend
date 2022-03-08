@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <a routerLink="/home/admin/roleList">
+            <app-icon-card title="Roles" type="info" detail="{{'roleCount'}}">
+                <i class="fas fa-user-alt"></i>
+            </app-icon-card>
+        </a>
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <app-icon-card title="Active" type="success" detail="{{'activeCount'}}">
+            <i class="fas fa-user-circle"></i>
+        </app-icon-card>
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <app-icon-card title="Inactive" type="warning" detail="{{'inactiveCount'}}">
+            <i class="far fa-user-circle"></i>
+        </app-icon-card>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-header>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <p>
+                            Note: Changing permission for a role(s) will logout all the associated user(s) with respective role(s).
+                        </p>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-end">
+                        <div>
+                            <button title="Add" data-bs-toggle="tooltip"
+                                type="button" class="btn sb_button_primary cursor float-end">
+                                <nb-icon icon="plus-outline"></nb-icon>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <hr class="hr_line"/>
+                <div class=row>
+                    <div class="col-md-4">
+                        <label class="sb_label">Configure Permissions for Role</label>
+                        <ng-select [(ngModel)]="selectedRole" (ngModelChange)="onSelectNewRole($event)" class="form-selection" notFoundText="No role found to configure"  placeholder="Select Role to configure . . ." required>
+                            <ng-option [value]="role?.id" *ngFor="let role of allRoleList">{{role?.roleName}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+            </nb-card-header>
+            <ng-container *ngIf="compareAlreadyCheckedPermission.length > 0">
+                <nb-card-body>
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let permission of compareAlreadyCheckedPermission;">
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="{{'perm-' + permission.id}}"
+                                       value="{{permission.id}}"
+                                       [checked]="permission.checked"
+                                       (change)="updateCheckedOptions($event.target)"
+                                />
+                                <label class="sb_label"
+                                       for="{{'perm-' + permission.id}}">{{permission.permissionName}}</label>
+                            </div>
+                            <div [ngbCollapse]="!permission.checked"
+                                 id="{{permission.id}}">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class=" col-md-6"
+                                             *ngFor="let api of permission.apiList; let i=index">
+                                            <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input"
+                                                       id="{{'api-' + permission.id}}"
+                                                       value="{{api.id}}"
+                                                       [checked]="api.checked"
+                                                       (change)="updateCheckapiOptions(permission.id, $event.target)"
+                                                />
+                                                <label class="sb_label"
+                                                       for="{{'api-' + permission.id}}">{{api.type}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nb-card-body>
+                <nb-card-footer>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn sb_button_primary cursor float-end" (click)="onSetRolesPermission()" title="Set Permissions">Save</button>
+                        </div>
+                    </div>
+                </nb-card-footer>
+            </ng-container>
+        </nb-card>
+    </div>
+</div>

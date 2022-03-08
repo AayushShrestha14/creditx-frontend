@@ -141,3 +141,12 @@ a {
   text-decoration: none !important;
   cursor: pointer;
 }
+
+label.sb_label {
+  font-weight: 500;
+  font-size: $sb_small_font_size;
+}
+
+.ng-select.form-selection {
+  font-size: $sb_small_font_size !important;
+}

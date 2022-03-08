@@ -45,6 +45,7 @@ import {
   DARK_THEME
 } from '@nebular/theme';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { IconCardComponent } from '../core/common/components/icon-card/icon-card.component';
 import { ComponentloaderDirective } from '../core/directives/componentloader.directive';
@@ -61,6 +62,7 @@ const BASE_MODULES: Array<any> = [
   ReactiveFormsModule,
   HttpClientModule,
   PipesModule,
+  NgSelectModule
 ];
 
 const NB_MODULES: Array<any> = [

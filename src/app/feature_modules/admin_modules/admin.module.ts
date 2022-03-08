@@ -8,6 +8,7 @@ import { ThemeModule } from 'src/app/theme_modules/theme.module';
 import { CommonResourceModule } from 'src/app/common_resource_modules/common-resource.module';
 import { HeaderActionComponent } from './roles_permissions_modules/action-component/header-action/header-action.component';
 import { RolesActionComponent } from './roles_permissions_modules/action-component/table-action/roles-action.component';
+import { PermissionConfigureComponent } from './roles_permissions_modules/permission-configure/permission-configure.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RolesActionComponent } from './roles_permissions_modules/action-compone
     BranchComponent,
     RolesPermissionsListComponent,
     RolesActionComponent,
-    HeaderActionComponent
+    HeaderActionComponent,
+    PermissionConfigureComponent
   ],
   imports: [
     CommonModule,
