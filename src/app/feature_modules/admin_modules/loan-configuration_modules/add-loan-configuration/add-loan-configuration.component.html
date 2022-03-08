@@ -97,26 +97,15 @@
           <div class="col-md-4">
             <div class="form-group">
               <label><h6>Category</h6></label>
-<!--              <ng-select >-->
+              <ng-select placeholder="Select category">
 <!--                #category="ngModel" [items]="loanCategories"-->
 <!--                         [multiple]="false"-->
 <!--                         bindValue="value"-->
 <!--                         bindLabel="key"-->
 <!--                         [(ngModel)]="selectedLoanCategory"-->
 <!--                         name="category"-->
-<!--                         placeholder="Select category"-->
-<!--              </ng-select>-->
-              <select>
-                <option>INDIVIDUAL</option>
-                <option>INSTITUTIONAL</option>
-                <!--#loanTag="ngModel" [items]="loanTagList"-->
-                <!--         bindLabel="value"-->
-                <!--         bindValue="key" name="loanTag"-->
-                <!--         [required]="true"-->
-                <!--         [(ngModel)]="selectedLoanTag"-->
-                <!--         (change)="onLoanTagChange()"-->
-                <!--         placeholder="Select Loan tag">-->
-              </select>
+
+              </ng-select>
               <div>
 <!--                *ngIf="loanConfigForm.submitted && !selectedLoanCategory">-->
                 <small class="text-danger">Loan categoy is required</small>
@@ -126,12 +115,13 @@
           <div class="col-md-4">
             <div class="form-group">
               <label><h6>Interest Rate</h6></label>
-              <input type="number">
-<!--                #interestRate="ngModel"-->
+              <input type="number"
+                >
+<!--              #interestRate="ngModel"-->
 <!--                     [ngClass]=" { 'is-invalid': loanConfigForm.submitted && interestRate.invalid }"-->
 <!--                     class="form-control" name="interestRate"-->
 <!--                     placeholder="Interest rate"-->
-<!--                     [(ngModel)]="loanConfig.interestRate" app-positive-decimal-number-->
+                     [(ngModel)]="loanConfig.interestRate" app-positive-decimal-number
 <!--                     required-->
 <!--                     type="number"/>-->
 <!--              <div *ngIf="loanConfigForm.submitted && interestRate.invalid" class="invalid-feedback">-->
@@ -143,18 +133,15 @@
           <div class="col-md-4">
             <div class="form-group">
               <label><h6>Loan Tag</h6></label>
-              <select>
-                <option>GENERAL</option>
-                <option>VEHICLE</option>
-                <option>FIXED DEPOSIT</option>
-                <!--#loanTag="ngModel" [items]="loanTagList"-->
-                <!--         bindLabel="value"-->
-                <!--         bindValue="key" name="loanTag"-->
-                <!--         [required]="true"-->
-                <!--         [(ngModel)]="selectedLoanTag"-->
-                <!--         (change)="onLoanTagChange()"-->
-                <!--         placeholder="Select Loan tag">-->
-              </select>
+              <ng-select
+                         placeholder="Select Loan tag">
+<!--                #loanTag="ngModel" [items]="loanTagList"-->
+<!--                bindLabel="value"-->
+<!--                bindValue="key" name="loanTag"-->
+<!--                [required]="true"-->
+<!--                [(ngModel)]="selectedLoanTag"-->
+<!--                (change)="onLoanTagChange()"-->
+              </ng-select>
 <!--              <div *ngIf="loanConfigForm.submitted && loanTag.invalid">-->
               <div>
                 <small class="text-danger">Invalid loan tag!</small>
@@ -270,8 +257,9 @@
 <!--                      <nb-checkbox id="{{'renewDocument'+documentIndex}}" status="primary"-->
 <!--                                   (change)="updateDocument($event, renewalDocument, finalRenewalDocument)"-->
 <!--                                   [checked]="renewalDocument.checked">-->
+                      <nb-checkbox status="primary">
 <!--                        <span>{{renewalDocument.displayName}}</span>-->
-<!--                      </nb-checkbox>-->
+                      </nb-checkbox>
                     </div>
                   </div>
                 </nb-accordion-item-body>
@@ -524,7 +512,7 @@
         </div>
       </div>
       <div class="box-footer text-right">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
       </div>
     </form>
   </nb-card-body>
