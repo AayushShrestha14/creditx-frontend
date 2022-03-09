@@ -27,23 +27,23 @@ export class LoanConfigurationListComponent implements OnInit {
 
   setLoanConfigJSONDetails: TableColumnSetting[] = [
     {
-      primaryKey: 'loanName',
+      primaryKey: 'name',
       header: 'Loan Name',
     },
     {
-      primaryKey: 'loanType',
+      primaryKey: 'isFundable',
       header: 'Loan Type',
     },
     {
-      primaryKey: 'natureOfLoan',
+      primaryKey: 'loanNature',
       header: 'Nature of Loan',
     },
     {
-      primaryKey: 'natureOfFinanceAssets',
+      primaryKey: 'financeAssets',
       header: 'Nature of Finance Assets',
     },
     {
-      primaryKey: 'categories',
+      primaryKey: 'loanCategories',
       header: 'Categories',
     },
     {
@@ -51,40 +51,36 @@ export class LoanConfigurationListComponent implements OnInit {
       header: 'Loan Tag',
     },
     {
-      primaryKey: 'renewable',
+      primaryKey: 'isRenewable',
       header: 'Renewable',
     },
     {
-      primaryKey: 'eligibilityStatus',
+      primaryKey: 'enableEligibility',
       header: 'Eligibility Status',
     }
   ];
 
   loanConfigDetails: Array<LoanConfigurationResponse> = new Array<LoanConfigurationResponse>();
 
+  constructor(
+    private loanConfigurationService: LoanConfigurationService
+  ) { }
+
+  ngOnInit(): void {
+    LoanConfigurationListComponent.listAllLoanConfigs(this);
+  }
+
   static listAllLoanConfigs(other: LoanConfigurationListComponent) {
     other.loanConfigurationService.getPaginationWithSearchObject(other.searchObj,other.page,10).subscribe({
       next: (response) => {
-        console.log(response);
-        other.loanConfigDetails = response.detail;
+        console.log('res', response);
+        other.loanConfigDetails = response.detail.content;
 
       },
       error: (error) =>{},
       complete: () => {}
     });
   }
-
-  constructor(
-    private loanConfigurationService: LoanConfigurationService
-  ) { }
-
-
-
-  ngOnInit(): void {
-    LoanConfigurationListComponent.listAllLoanConfigs(this);
-  }
-
-
 
   changePage(page: number) {
     this.page = page;
