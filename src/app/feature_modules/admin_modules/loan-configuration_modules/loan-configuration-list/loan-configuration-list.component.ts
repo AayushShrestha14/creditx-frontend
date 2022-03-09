@@ -45,7 +45,8 @@ export class LoanConfigurationListComponent implements OnInit {
     {
       primaryKey: 'categories',
       header: 'Categories',
-    },    {
+    },
+    {
       primaryKey: 'loanTag',
       header: 'Loan Tag',
     },
