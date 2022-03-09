@@ -10,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class UserService extends BaseApiService<any> {
-  static API = 'user';
+  static API = 'role';
 
   constructor(
     readonly http: HttpClient,

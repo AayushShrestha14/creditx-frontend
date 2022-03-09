@@ -18,4 +18,5 @@ export class UserFormComponent implements OnInit {
   onClose() {
     this.activeModel.dismiss();
   }
+
 }

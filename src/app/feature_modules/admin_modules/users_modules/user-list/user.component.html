@@ -105,7 +105,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let data of userList; let i=index;">
+          <tr *ngFor="let data of dataList; let i=index;">
             <td>{{ i + 1 }}</td>
             <td>Niresh Shrestha</td>
             <td>niresh.shrestha@sbsolutionsnepal.com</td>
@@ -115,7 +115,7 @@
             <td>{{ data?.status}}</td>
             <td></td>
             <td>
-              <button type="button" class="btn sb_button_primary cursor action_buttons">
+              <button type="button" class="btn sb_button_primary cursor action_buttons" (click)="edit()">
                 <nb-icon icon="edit-outline"></nb-icon>
               </button>
               <button type="button" class="btn sb_button_danger cursor action_buttons">

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/user.service';
-import {FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UserFormComponent} from '../user-form/user-form.component';
+import {UserEditComponent} from '../user-edit/user-edit.component';
 import {Pageable} from '../../../../core/common/services/common-pageable';
 import {PaginationUtils} from '../../../../core/utils/PaginationUtils';
 
@@ -14,6 +15,8 @@ import {PaginationUtils} from '../../../../core/utils/PaginationUtils';
 export class UserComponent implements OnInit {
   userList: Array<any> = [];
   dataList: Array<any> = [];
+
+
 
   filterFlag: boolean = true;
   page = 1;
@@ -31,6 +34,7 @@ export class UserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private modalService: NgbModal,
+    private formBuilder: FormBuilder,
   ) {
   }
 
@@ -58,5 +62,18 @@ export class UserComponent implements OnInit {
 
   add() {
     const modalRef = this.modalService.open(UserFormComponent, {size: 'lg', backdrop: 'static'});
+  }
+
+  edit() {
+    const modalRef = this.modalService.open(UserEditComponent, {size: 'lg'})
+  }
+
+  buildFilterForm() {
+    this.filterForm = this.formBuilder.group({
+      name: [undefined],
+      branch: [undefined],
+      role: [undefined],
+      activeStatus: [undefined]
+    });
   }
 }
