@@ -10,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class UserService extends BaseApiService<any> {
-  static API = 'role';
+  static API = 'user';
 
   constructor(
     readonly http: HttpClient,
@@ -41,6 +41,20 @@ export class UserService extends BaseApiService<any> {
         return throwError(() => error.error);
       })
     );
+  }
+
+  public getUsersByRole(roles: any): Observable<any> {
+    const api = `${this.getApi()}/listByRole`;
+    const req = ApiUtils.getRequest(api);
+
+    return this.http.post(req.url, roles, {headers: req.header});
+  }
+
+  public getRoles(): Observable<any> {
+    const api = `${this.getApi()}/listRole`;
+    const req = ApiUtils.getRequest(api);
+
+    return this.http.get(req.url, {headers: req.header});
   }
 
 }
