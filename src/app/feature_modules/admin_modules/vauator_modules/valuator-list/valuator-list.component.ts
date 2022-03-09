@@ -20,6 +20,12 @@ export class ValuatorListComponent implements OnInit {
 
   page: number = 1;
 
+  countResponse: any ={
+    totalRecords: 0,
+    totalActive: 0,
+    totalInactive: 0
+  }
+
   pageable: Pageable = new Pageable();
 
   setValuatorJSONDetails: TableColumnSetting[] = [
@@ -72,6 +78,12 @@ export class ValuatorListComponent implements OnInit {
 
   ngOnInit(): void {
     this.allValuatorList();
+
+    this.valuatorService.getStatus().subscribe((response: any)=> {
+      this.countResponse.totalActive = response.detail.active;
+      this.countResponse.totalInactive = response.detail.inactive;
+      this.countResponse.totalRecords = response.detail.valuators;
+    })
   }
 
   allValuatorList() {
