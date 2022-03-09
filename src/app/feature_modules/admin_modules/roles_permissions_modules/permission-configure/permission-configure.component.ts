@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ObjectUtil } from 'src/app/core/utils/ObjectUtil';
+import { AddRoleComponent } from '../add-role/add-role.component';
 import { ActiveRoles } from '../models/active-roles.model';
 import { PermissionService } from '../services/permission.service';
 import { RolesPermissionService } from '../services/roles-permission.service';
@@ -49,14 +51,26 @@ export class PermissionConfigureComponent implements OnInit {
   constructor(
     private rolesPermissionService: RolesPermissionService,
     private rolesService: RolesService,
-    private permissionService: PermissionService
+    private permissionService: PermissionService,
+    private ngbModal: NgbModal,
   ) {}
 
   ngOnInit() {
     PermissionConfigureComponent.loadData(this);
   }
 
-  onAddNewRole() {}
+  onAddNewRole() {
+    let options: NgbModalOptions = {
+      backdrop: 'static', keyboard: false
+    };
+    const addNewRole = this.ngbModal.open(AddRoleComponent, options);
+    addNewRole.result.then((data: any) => {
+      console.log('data :', data);
+      PermissionConfigureComponent.loadData(this);
+    }, (reason: any) => {
+      console.log('reason :', reason);
+    });
+  }
 
   onSelectNewRole(event: any) {
     if (ObjectUtil.isEmpty(event)) {

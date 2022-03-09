@@ -1,6 +1,6 @@
-@use "themes" as *;
+@use 'themes' as *;
 
-@use "@nebular/theme/styles/globals" as *;
+@use '@nebular/theme/styles/globals' as *;
 
 @include nb-install() {
   @include nb-theme-global();
@@ -21,7 +21,8 @@ $sb_common_font_size: 12px; // default font size
 
 $sb_small_font_size: 10px; // small font size
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -62,13 +63,15 @@ nb-menu {
   max-width: 14rem !important;
 }
 
-nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
+nb-sidebar.nb-menu .menu-group,
+.nb-theme-default nb-menu .menu-item a {
   line-height: 0px;
   padding: 0.25rem 1rem;
 }
 
 .nb-theme-default nb-layout.window-mode .layout {
-  nb-layout-header nav, nb-layout-footer nav {
+  nb-layout-header nav,
+  nb-layout-footer nav {
     height: 50px !important;
   }
 }
@@ -76,7 +79,6 @@ nb-sidebar.nb-menu .menu-group, .nb-theme-default nb-menu .menu-item a {
 .nb-theme-default nb-menu .menu-item a {
   font-size: $sb_small_font_size !important;
 }
-
 
 nav.navbar.navbar-expand-sm {
   position: relative !important;
@@ -93,37 +95,38 @@ nav.navbar.navbar-expand-sm {
 }
 
 .sb_button_primary {
-  background-color:$sb_primary_button_color !important;
+  background-color: $sb_primary_button_color !important;
   color: white !important;
   padding: 1px 4px !important;
 }
 
 .sb_button_secondary {
-  background-color:$sb_secondary_button_color!important;
+  background-color: $sb_secondary_button_color !important;
   color: white !important;
   padding: 1px 4px !important;
 }
 
 .sb_button_danger {
-  background-color:$sb_danger_button_color!important;
+  background-color: $sb_danger_button_color !important;
   color: white !important;
   padding: 1px 4px !important;
 }
-
 
 // for table styling
 
 table.table.sb_table {
   thead {
-    background-color:$sb_product_color;
+    background-color: $sb_product_color;
     color: white;
   }
-  th.sb_sm_col, td.sb_sm_col {
+  th.sb_sm_col,
+  td.sb_sm_col {
     width: 5%;
-}
+  }
 }
 
-.sb-small, .sb_counter_title {
+.sb-small,
+.sb_counter_title {
   font-size: $sb_common_font_size;
 }
 
@@ -144,6 +147,12 @@ a {
   cursor: pointer;
 }
 
+.sb_header,
+.sb_info {
+  background-color: $sb_product_color !important;
+  color: white !important;
+}
+
 label.sb_label {
   font-weight: 500;
   font-size: $sb_small_font_size;
@@ -151,4 +160,46 @@ label.sb_label {
 
 .ng-select.form-selection {
   font-size: $sb_small_font_size !important;
+}
+
+.ng-select .ng-select-container {
+  min-height: 32px !important;
+}
+
+.ng-select.form-selection.ng-select-single .ng-select-container {
+  height: 32px !important;
+}
+
+// to override and decrease placeholders font size
+::-webkit-input-placeholder {
+  font-size: $sb_small_font_size !important;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: $sb_small_font_size !important;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: $sb_small_font_size !important;
+}
+
+/* Overriding styles */
+
+::-webkit-input-placeholder {
+  font-size: $sb_small_font_size !important;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: $sb_small_font_size !important;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: $sb_small_font_size !important;
+}
+
+.row.form_data_row {
+  margin-bottom: 15px;
 }
