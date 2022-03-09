@@ -20,6 +20,7 @@ import { UserComponent} from "./users_modules/user-list/user.component";
 import { UserFormComponent } from './users_modules/user-form/user-form.component';
 import { PermissionConfigureComponent } from "./roles_permissions_modules/permission-configure/permission-configure.component";
 import { UserEditComponent } from './users_modules/user-edit/user-edit.component';
+import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuator.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { UserEditComponent } from './users_modules/user-edit/user-edit.component
     ValuatorHeaderActionComponent,
     UserFormComponent,
     PermissionConfigureComponent,
-    UserEditComponent
+    UserEditComponent,
+    AddValuatorComponent
   ],
   imports: [
     CommonModule,
