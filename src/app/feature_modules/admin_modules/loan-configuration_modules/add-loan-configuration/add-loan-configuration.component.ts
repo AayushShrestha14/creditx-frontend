@@ -30,9 +30,9 @@ export class AddLoanConfigurationComponent implements OnInit {
       loanTag: [undefined],
       renewable: [undefined],
       offerLetters: [undefined],
-      minimumProposedAmount: [undefined],
+      minimumProposedAMount: [undefined],
     })
 
   }
-
 }
+

@@ -21,6 +21,12 @@ export class RolesPermissionsListComponent implements OnInit {
 
   page: number = 1;
 
+  countResponse: any = {
+    totalRecords: 0,
+    totalActive: 0,
+    totalInactive: 0
+  }
+
   pageable: Pageable = new Pageable();
 
   setResponseHeaderJSON: TableColumnSetting[] = [
@@ -58,6 +64,12 @@ export class RolesPermissionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.allRoleList();
+
+    this.rolesService.getStatus().subscribe((response: any)=> {
+      this.countResponse.totalActive = response.detail.active;
+      this.countResponse.totalInactive = response.detail.inactive;
+      this.countResponse.totalRecords = response.detail.roles;
+    })
   }
 
   allRoleList() {
