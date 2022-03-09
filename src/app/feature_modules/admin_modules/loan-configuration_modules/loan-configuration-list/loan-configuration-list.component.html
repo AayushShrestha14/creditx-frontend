@@ -2,7 +2,7 @@
   <div class="col-sm-12">
     <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12">
-        <app-icon-card detail="{{ 'loanTemplateCount' }}"
+        <app-icon-card detail="{{ countResponse.totalRecords }}"
                        title="Loan Templates"
                        type="info">
           <nb-icon icon="checkmark-square-outline"></nb-icon>
@@ -11,7 +11,7 @@
 
       <div class="col-md-4 col-sm-6 col-xs-12">
         <app-icon-card
-          detail="{{ 'activeLoanCount' }}"
+          detail="{{ countResponse.totalActive }}"
           title="Active Loan Template"
           type="success"
         >
@@ -21,7 +21,7 @@
 
       <div class="col-md-4 col-sm-6 col-xs-12">
         <app-icon-card
-          detail="{{ 'inactiveLoanCount' }}"
+          detail="{{ countResponse.totalInactive }}"
           title="Inactive Loan Template"
           type="warning"
         >
