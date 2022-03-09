@@ -21,6 +21,8 @@ import { ValuatorListComponent } from './vauator_modules/valuator-list/valuator-
 import { TableActionComponent } from './vauator_modules/action-component/table-action/table-action.component';
 import { ValuatorHeaderActionComponent } from './vauator_modules/action-component/header-action/header-action.component';
 import { LoanConfigurationListComponent } from './loan-configuration_modules/loan-configuration-list/loan-configuration-list.component';
+import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuator.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { LoanConfigurationListComponent } from './loan-configuration_modules/loa
     AddLoanConfigurationComponent,
     ValuatorListComponent,
     TableActionComponent,
-    ValuatorHeaderActionComponent
+    ValuatorHeaderActionComponent,
+    AddValuatorComponent
   ],
   imports: [
     CommonModule,

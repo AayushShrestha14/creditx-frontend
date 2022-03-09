@@ -11,8 +11,9 @@ export class ValuatorResponse extends SbBaseModel {
   email: string | undefined;
   branch: string | undefined;
   valuatingField: string | undefined;
-  bankAssociateDate: string | undefined;
+  bankAssociateDate: Date | undefined;
   minAmount: string | undefined;
   maxAmount: string | undefined;
   status: string | undefined;
+  state: string | undefined;
 }
