@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-add-loan-configuration',
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddLoanConfigurationComponent implements OnInit {
 
-  constructor() { }
-
+  loanConfigForm: FormGroup = new FormGroup({});
+  constructor(
+    private formBuilder: FormBuilder,
+  ) { }
   ngOnInit(): void {
+    this.buildForm();
   }
 
+
+  buildForm() {
+    this.loanConfigForm = this.formBuilder.group({
+      name: [undefined],
+      fundable : [undefined],
+      loanNature: [undefined],
+      financedAssets: [undefined],
+      collateralrequirement: [undefined],
+      shortNames: [undefined],
+      category: [undefined],
+      interestRate: [undefined],
+      loanTag: [undefined],
+      renewable: [undefined],
+      offerLetters: [undefined],
+      minimumProposedAMount: [undefined],
+    })
+
+  }
 }
+

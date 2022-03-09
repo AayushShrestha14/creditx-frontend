@@ -1,0 +1,198 @@
+<nb-card>
+  <nb-card-header class="sb-bg-dark">
+    <a (click)="onClose()" aria-label="Close" class="close cursor float-end"
+       data-dismiss="modal">
+      <span aria-hidden="true">×</span></a>
+    <h4 class="modal-title pull-left">{{formLabel}}</h4>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="valuatorForm">
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label class="sb_label" for="name">Name</label>
+          <input class="form-control"
+                 formControlName="name"
+                 id="name" placeholder="Name"
+                 type="text"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.name.invalid" class="invalid-feedback">
+            Name is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label class="sb_label">Province</label>
+          <ng-select class="form-selection"
+                     formControlName="province"
+                     placeholder="Select Province...">
+            <ng-option *ngFor="let provinceVal of provinces"
+                       [value]="provinceVal">{{provinceVal.name}}</ng-option>
+          </ng-select>
+          <!--<div *ngIf="(submitted) && valuatorFormControl.province.invalid"
+               class="invalid-feedback">
+            <div *ngIf="valuatorFormControl.province.errors.required">
+              Province is required
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label class="sb_label">District</label>
+          <ng-select class="form-selection"
+                     formControlName="district"
+                     placeholder="Select District...">
+            <ng-option *ngFor="let districtVal of districts"
+                       [value]="districtVal">{{districtVal.name}}</ng-option>
+          </ng-select>
+          <!--<div *ngIf="(submitted) && valuatorFormControl.district.invalid"
+               class="invalid-feedback">
+            <div *ngIf="valuatorFormControl.district.errors.required">
+              District is required!
+            </div>
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label class="sb_label">Municipality</label>
+          <ng-select class="form-selection"
+                     formControlName="municipalityVdc"
+                     placeholder="Select Municipality...">
+            <ng-option *ngFor="let municipalityVal of municipalities"
+                       [value]="municipalityVal">{{municipalityVal.name}}</ng-option>
+            <ng-option>Damak</ng-option>
+            <ng-option>Pathari</ng-option>
+            <ng-option>Jhapa</ng-option>
+          </ng-select>
+          <!--<div *ngIf="(submitted) && valuatorFormControl.municipalityVdc.invalid"
+               class="invalid-feedback">
+            <div *ngIf="valuatorFormControl.municipalityVdc.errors.required">
+              Municipality Vdc is required!
+            </div>
+          </div>-->
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label class="sb_label">Street Name</label>
+          <input class="form-control"
+                 formControlName="streetName" id="street_name"
+                 name="streetName"
+                 placeholder="Street Name"
+                 type="text"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.streetName.invalid" class="invalid-feedback">
+            Street is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label class="sb_label">Ward Number</label>
+          <input class="form-control"
+                 formControlName="wardNumber" id="ward_number"
+                 name="ward"
+                 placeholder="Ward Number"
+                 type="number"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.wardNumber.invalid" class="invalid-feedback">
+            Ward number is required
+          </div>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label class="sb_label">Contact Number</label>
+          <input class="form-control"
+                 formControlName="contactNo"
+                 id="contactNo" name="contactNo" placeholder="Contact Number"
+                 type="number"/>
+          <!--<div *ngIf="valuatorFormControl.contactNo.invalid && submitted" class="invalid-feedback">
+            Contact is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label class="sb_label">Email</label>
+          <input class="form-control"
+                 formControlName="email"
+                 id="email" placeholder="Email"
+                 type="text"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.email.invalid" class="invalid-feedback">
+            Email is required
+          </div>-->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label class="sb_label">Valuating Type</label>
+          <ng-select formControlName="valuatingField"
+                     placeholder="Select Valuating Type..." class="form-selection">
+            <ng-option *ngFor="let valuatingType of valuatingFieldEnum" [value]="valuatingType?.value">{{valuatingType?.value}}</ng-option>
+          </ng-select>
+          <!--<div *ngIf="valuatorFormControl.valuatingField.invalid && submitted" class="invalid-feedback">
+            Valuating Type is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label class="sb_label">Bank Associate Date</label>
+          <input nbInput fullWidth
+                 class="form-control" formControlName="bankAssociateDate"
+                 type="date">
+          <!--<div *ngIf="valuatorFormControl.bankAssociateDate.invalid && submitted" class="invalid-feedback">
+            Bank Associate Date is required!
+          </div>-->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-6">
+          <label class="sb_label">Minimum Amount</label>
+          <input class="form-control"
+                 formControlName="minAmount"
+                 id="minAmount" placeholder="Minimum Amount"
+                 type="number"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.minAmount.invalid" class="invalid-feedback">
+            Minimum Amount is required!
+          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <label class="sb_label">Maximum Amount</label>
+          <input class="form-control"
+                 formControlName="maxAmount"
+                 id="maxAmount" placeholder="Maximum Amount"
+                 type="number"/>
+          <!--<div *ngIf="submitted && valuatorFormControl.maxAmount.invalid" class="invalid-feedback">
+            Maximum Amount is required and its value should be greater than Minimum Amount
+          </div>-->
+        </div>
+
+        <div class="col-md-12 py-2">
+          <label class="sb_label">Branches</label>
+          <ng-select bindLabel="name"
+                     formControlName="branch" class="form-selection"
+                     placeholder="Select Branch...">
+            <ng-template let-index="index" let-item="item" let-search="searchTerm" ng-option-tmp>
+              {{item['name']}} | <strong>{{item['branchCode']}}</strong>
+            </ng-template>
+          </ng-select>
+          <!--<div *ngIf="valuatorFormControl.branch.invalid && submitted" class="sb-small py-2 text-danger">
+            Branch is required!
+          </div>-->
+        </div>
+        <div class="col-md-12 py-2">
+          <!--<nb-checkbox (checkedChange)="checkAllBranch($event)" [checked]="this.model.isAllBranch">-->
+          <nb-checkbox>
+            Add All Branch
+          </nb-checkbox>
+        </div>
+      </div>
+    </form>
+    <nb-card-footer>
+      <div class="row">
+        <div class="col-sm-12">
+          <button type="button" class="btn sb_button_primary cursor float-end" (click)="onSubmit()" title="Save">Save</button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card-body>
+</nb-card>
