@@ -12,7 +12,7 @@ import {SharedService} from "../../../../core/common/services/shared.service";
 export class DocumentService extends BaseApiService<Document>{
   static API = 'v1/document';
 
-  constructor(override readonly http: HttpClient, protected shareService: SharedService){
+  constructor(protected readonly http: HttpClient, protected shareService: SharedService){
     super(http, shareService)
   }
 

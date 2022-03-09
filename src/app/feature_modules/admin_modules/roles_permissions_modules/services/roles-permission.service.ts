@@ -11,7 +11,7 @@ export class RolesPermissionService extends BaseApiService<any> {
   static API = 'admin/roleRightPermission';
 
   constructor(
-    protected readonly httpClient: HttpClient,
+    protected override readonly httpClient: HttpClient,
     protected override readonly sharedService: SharedService
   ) {
     super(httpClient, sharedService);

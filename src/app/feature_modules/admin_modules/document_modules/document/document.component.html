@@ -93,3 +93,29 @@
     </nb-card>
   </div>
 </div>
+
+<div class="row" *ngIf="loanCycleList.length > 0">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body>
+        <div class="row">
+          <ng-container *ngFor="let loanCycle of loanCycleList">
+            <div class="col-md-6 mb-4" *ngIf="loanCycle?.cycle !== 'Eligibility' && loanCycle?.cycle !== 'Cad Document'">
+              <app-update-document [cycle]="loanCycle"></app-update-document>
+            </div>
+            <!-- *ngIf="loanCycle?.cycle === 'Eligibility' && productUtils.ELIGIBILITY" -->
+            <div
+                 class="col-md-6 mb-4">
+              <app-update-document [cycle]="loanCycle"></app-update-document>
+            </div>
+            <!-- *ngIf="loanCycle?.cycle === 'Cad Document' && ((productUtils.CAD_LITE_VERSION) || (productUtils.FULL_CAD))" -->
+            <div
+                 class="col-md-6 mb-4">
+              <app-update-document [cycle]="loanCycle"></app-update-document>
+            </div>
+          </ng-container>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

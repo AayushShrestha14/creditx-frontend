@@ -15,7 +15,7 @@ export class ProductModeService extends BaseApiService<ProductMode> {
 
     static URL = 'v1/product-mode';
 
-    constructor(override readonly http: HttpClient, protected override sharedService: SharedService) {
+    constructor(protected readonly http: HttpClient, protected override sharedService: SharedService) {
         super(http, sharedService);
     }
 

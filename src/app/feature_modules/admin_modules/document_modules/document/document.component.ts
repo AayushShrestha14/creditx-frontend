@@ -6,9 +6,10 @@ import {PaginationUtils} from "../../../../core/utils/PaginationUtils";
 import {DocumentService} from "../services/document.service";
 import {Pageable} from "../../../../core/common/services/common-pageable";
 import {LoanCycle} from "../model/loanCycle";
-import {ProductModeService} from "../services/product-mode.service";
+import {ProductModeService, ProductUtils} from "../services/product-mode.service";
 import {Action} from "../model/Action";
 import {Document} from "../model/document";
+import {LocalStorageUtil} from "../../../../core/utils/local-storage-util";
 
 @Component({
   selector: 'app-document',
@@ -26,6 +27,9 @@ export class DocumentComponent implements OnInit {
   dataList: Array<Document> = new Array<Document>();
   loanCycleList: Array<LoanCycle> = new Array<LoanCycle>();
   showEligibility = false;
+
+  productUtils: ProductUtils | undefined = LocalStorageUtil.getStorage().productUtil;
+
   constructor(
               private modalService: NgbModal,
               private service: DocumentService,

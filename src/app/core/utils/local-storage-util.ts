@@ -3,6 +3,7 @@ import { CryptoJsUtil } from './crypto-js-util';
 import { environment } from '../../../environments/environment';
 import { NbMenuItem } from '@nebular/theme';
 import { AccessRoles } from '../common/models/access-roles.model';
+import {ProductUtils} from "../../feature_modules/admin_modules/document_modules/services/product-mode.service";
 
 export class LocalStorageUtil {
   /**
@@ -63,4 +64,5 @@ export class LocalStorage {
   roles: AccessRoles[] = Array<AccessRoles>();
   menus: NbMenuItem[] = Array<NbMenuItem>();
   productMode: string | undefined;
+  productUtil: ProductUtils | undefined;
 }

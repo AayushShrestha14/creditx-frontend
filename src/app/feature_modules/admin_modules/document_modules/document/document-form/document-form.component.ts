@@ -1,11 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {EnumUtils} from "../../model/enums.utils";
 import {DocumentCheckType} from "../../enum/document-check-type.enum";
 import {Action} from "../../model/Action";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {ModalResponse} from "../../model/ModalResponse";
 import {Alert, AlertType} from "../../../../../core/common/models/Alert";
+import {ObjectUtil} from "../../../../../core/utils/ObjectUtil";
 
 @Component({
   selector: 'app-document-form',
@@ -30,13 +31,26 @@ export class DocumentFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.buildForm();
+  }
 
-   this.modelForm = this.formBuilder.group({
+  buildForm(): void {
+    /*this.modelForm = this.formBuilder.group(
+      {
+        id: [this.model.id === undefined ? '' : this.model.id],
+        name: [this.model.displayName === undefined ? '' : this.model.displayName,
+          [Validators.required, Validators.pattern('[a-zA-Z0-9 ]*')]],
+        checkType: [ObjectUtil.setUndefinedIfNull(this.model.checkType)],
+        containsTemplate: [ObjectUtil.isEmpty(this.model.containsTemplate) ? false : this.model.containsTemplate],
+      }
+    );*/
+
+    this.modelForm = this.formBuilder.group({
       id: [undefined],
       name: new FormControl(undefined),
       checkType: new FormControl(undefined),
       containsTemplate: new FormControl(undefined),
-    })
+    });
   }
 
   onSubmit() {

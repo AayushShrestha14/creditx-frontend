@@ -1,1 +1,39 @@
-<p>update-document works!</p>
+<nb-accordion>
+  <nb-accordion-item>
+    <nb-accordion-item-header class="sb-small sb-bg-secondary text-white">
+      <h6>{{title}}</h6> &nbsp;
+      <em> {{label}}</em>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <div *ngIf="availableDocumentOptions.length > 0">
+        <button (click)="selectAll($event)" class="btn btn-primary btn-sm">Select All</button>
+        <button (click)="unSelectAll($event)" class="btn btn-primary btn-sm">Unselect All</button>
+        <br><br>
+        <form [formGroup]="form" (ngSubmit)="save()" *ngIf="form">
+          <div class="form-row">
+            <!--  *ngFor="let option of availableDocumentOptions" -->
+            <div class="col-md-6">
+              <!-- [checked]="checkAll"
+                           id="{{'document'+ option.id}}"
+                           status="primary"
+                           [formControlName]="option.name" -->
+              <nb-checkbox>
+                <!--{{option.displayName}}-->
+              </nb-checkbox>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 d-flex justify-content-end">
+              <button nbButton status="info" size="small" type="submit">
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="availableDocumentOptions.length <= 0">
+        No document found
+      </div>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>

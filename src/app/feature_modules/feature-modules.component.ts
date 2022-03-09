@@ -46,7 +46,7 @@ export class FeatureModulesComponent implements OnInit {
     const document = {
       title: 'Document',
       link: '/home/admin_modules/document',
-      icon: 'person-done-outline'
+      icon: 'book-outline'
     };
 
 
