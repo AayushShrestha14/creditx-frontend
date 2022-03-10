@@ -35,6 +35,12 @@ export class PermissionConfigureComponent implements OnInit {
 
   submitted: boolean = false;
 
+  countResponse: any = {
+    totalRecords: 0,
+    totalActive: 0,
+    totalInactive: 0
+  }
+
   static loadData(other: PermissionConfigureComponent) {
     other.rolesService.allActiveDataList().subscribe({
       next: (data) => {
@@ -57,6 +63,12 @@ export class PermissionConfigureComponent implements OnInit {
 
   ngOnInit() {
     PermissionConfigureComponent.loadData(this);
+
+    this.rolesService.getStatus().subscribe((response:any) => {
+      this.countResponse.totalRecords = response.detail.roles;
+      this.countResponse.totalActive = response.detail.active;
+      this.countResponse.totalInactive = response.detail.inactive;
+    })
   }
 
   onAddNewRole() {

@@ -24,7 +24,12 @@
                     formControlName="roleName"
                     required
                     id="roleName"
+                    [ngClass]="{ 'is-invalid': submitted && forms['roleName'].errors }"
                     />
+                  <span *ngIf="submitted || forms['roleName'].touched || forms['roleName'].dirty && forms['roleName'].invalid"
+                    class="info-msg text-danger">
+                      <small *ngIf="forms['roleName'].errors && forms['roleName'].errors?.['required']">Role Name is required.</small>
+                  </span>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -33,6 +38,10 @@
                     <ng-select (ngModelChange)="checkRole()" formControlName="roleType" class="form-selection" notFoundText="No role type found"  placeholder="Select Role Type . . ." required>
                         <ng-option [value]="type" *ngFor="let type of appConfigRoleType">{{type |  replace:'_':' '}}</ng-option>
                     </ng-select>
+<!--                  <span *ngIf="submitted || forms['roleType'].touched || forms['roleType'].dirty && forms['roleType'].invalid"-->
+<!--                        class="info-msg text-danger">-->
+<!--                      <small *ngIf="forms['roleType'].errors && forms['roleType'].errors?.['required']">Role Type is required.</small>-->
+<!--                  </span>-->
                 </div>
             </div>
 
@@ -42,6 +51,10 @@
                     <ng-select formControlName="roleAccess" class="form-selection" notFoundText="No data found"  placeholder="Select Branch . . ." required>
                         <ng-option [value]="roleAccess?.key" *ngFor="let roleAccess of roleAccessList">{{roleAccess?.value}}</ng-option>
                     </ng-select>
+                  <span *ngIf="submitted || forms['roleAccess'].touched || forms['roleAccess'].dirty && forms['roleAccess'].invalid"
+                        class="info-msg text-danger">
+                      <small *ngIf="forms['roleAccess'].errors && forms['roleAccess'].errors?.['required']">Role Access is required.</small>
+                  </span>
                 </div>
             </div>
             <div class="col-sm-6" *ngIf="showAuthority">
@@ -56,6 +69,10 @@
                     required
                     id="authorityLabel"
                     />
+                  <span *ngIf="submitted || forms['authorityLabel'].touched || forms['authorityLabel'].dirty && forms['authorityLabel'].invalid"
+                        class="info-msg text-danger">
+                      <small *ngIf="forms['authorityLabel'].errors && forms['authorityLabel'].errors?.['required']">Authority Label is required.</small>
+                  </span>
                 </div>
             </div>
         </div>
