@@ -37,7 +37,7 @@ export class PermissionConfigureComponent implements OnInit {
   submitted: boolean = false;
 
   countResponse: GlobalCounter = new GlobalCounter();
-  
+
   static loadData(other: PermissionConfigureComponent) {
     other.rolesService.allActiveDataList().subscribe({
       next: (data) => {
