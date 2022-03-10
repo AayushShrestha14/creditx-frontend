@@ -21,9 +21,9 @@ export class AppConfigService extends BaseApiService<any> {
   protected getApi(): string {
     return AppConfigService.API;
   }
-  
+
   public getRoleType(): Observable<any> {
-    const req = ApiUtils.getRequestWithFileSupport(
+    const req = ApiUtils.getRequest(
       `${AppConfigService.API}/role-type`
     );
     return this.httpClient.get(req.url, { headers: req.header });
