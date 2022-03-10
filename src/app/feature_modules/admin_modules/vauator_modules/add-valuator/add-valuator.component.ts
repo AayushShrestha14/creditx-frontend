@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ValuatorResponse} from "../models/valuator-response.model";
 import {ValuatorService} from "../services/valuator.service";
 import {ValuatingType} from "../../../../core/enums/valuating-type";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-valuator',
