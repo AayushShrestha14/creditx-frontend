@@ -1,0 +1,67 @@
+<div class="modal-header sb-bg-dark">
+    <h4 class="modal-title">Add User</h4>
+    <a (click)="onClose()" aria-label="Close" class="close cursor" style="font-size: 1.75rem;">
+        <span aria-hidden="true">×</span>
+    </a>
+</div>
+<div class="modal-body">
+    <form name="form">
+        <div class="row form-group mt-2">
+            <div class="position-absolute w-50 d-flex justify-content-end pr-5 ml-3 pb-2-1">
+                <label> <input type="checkbox" style="margin-right: 0.25rem;"><b>Edit Role</b></label>
+            </div>
+            <div class="col-md-6">
+                <label class="mb-1" for="roles"><b>Role</b></label>
+                <ng-select id="roles" name="roles" placeholder="Select Role" required>
+                    <ng-option>Name 1</ng-option>
+                    <ng-option>Name 2</ng-option>
+                    <ng-option>Name 3</ng-option>
+                </ng-select>
+                <div>
+                    <div hidden>Role is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group mt-2">
+            <div class="col-md-6">
+                <label class="mb-1" for="name"><b>Name</b></label>
+                <input class="form-control" name="id" placeholder="id" type="hidden">
+                <input class="form-control" id="name" name="name" placeholder="Name" required type="text" />
+                <div class="invalid-feedback">
+                    <div>First Name is required</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="mb-1" for="userName"><b>Username</b></label>
+                <input class="form-control" id="userName" name="userName" placeholder="Username" required type="text" />
+                <div hidden>
+                    <div>User Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group mt-2">
+            <div class="col-md-6">
+                <label class="mb-1" for="email"><b>Email</b></label>
+                <input class="form-control" email id="email" name="email" type="email" placeholder="Email" required
+                    app-valid-email />
+                <div class="invalid-feedback">
+                    <div>Email is required</div>
+                    <div>Email is invalid</div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group mt-2">
+            <div class="col-md-6">
+                <label class="d-block mb-2" for="signatureImage"><b>Signature</b></label>
+                <input accept="image/*" id="signatureImage" name="signatureImage" name="photo" type="file" />
+            </div>
+            <div class="col-md-6">
+                <p>This User has {{4}} number of customers loan please transfer loan to proceed.</p>
+                <p><a class="pr-2 cursor text-success">Click&nbsp;</a>here to transfer the loan</p>
+            </div>
+        </div>
+        <div class="modal-footer mt-2">
+            <button nbButton status="info">Save</button>
+        </div>
+    </form>
+</div>

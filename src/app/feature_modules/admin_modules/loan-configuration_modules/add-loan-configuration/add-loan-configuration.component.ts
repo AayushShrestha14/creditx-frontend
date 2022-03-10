@@ -63,7 +63,7 @@ export class AddLoanConfigurationComponent implements OnInit {
       loanCategory: [undefined],
       isRenewable: [undefined],
       offerLetters: [undefined],
-      minimumProposedAmount: [undefined],
+      minimumProposedAMount: [undefined],
       securityType: [undefined],
     })
 
@@ -77,5 +77,5 @@ export class AddLoanConfigurationComponent implements OnInit {
       console.log(error);
     });
   }
-
 }
+

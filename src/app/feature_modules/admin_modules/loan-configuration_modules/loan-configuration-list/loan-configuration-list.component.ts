@@ -25,6 +25,12 @@ export class LoanConfigurationListComponent implements OnInit {
 
   pageable: Pageable = new Pageable();
 
+  countResponse: any = {
+    totalRecords: 0,
+    totalActive: 0,
+    totalInactive: 0
+  }
+
   setLoanConfigJSONDetails: TableColumnSetting[] = [
     {
       primaryKey: 'name',
@@ -68,6 +74,12 @@ export class LoanConfigurationListComponent implements OnInit {
 
   ngOnInit(): void {
     LoanConfigurationListComponent.listAllLoanConfigs(this);
+
+    this.loanConfigurationService.getStatus().subscribe((response: any)=> {
+      this.countResponse.totalActive = response.detail.active;
+      this.countResponse.totalInactive = response.detail.inactive;
+      this.countResponse.totalRecords = response.detail.loans;
+    })
   }
 
   static listAllLoanConfigs(other: LoanConfigurationListComponent) {
