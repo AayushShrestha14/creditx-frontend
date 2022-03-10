@@ -66,7 +66,9 @@ export class PermissionConfigureComponent implements OnInit {
     const addNewRole = this.ngbModal.open(AddRoleComponent, options);
     addNewRole.result.then((data: any) => {
       console.log('data :', data);
-      PermissionConfigureComponent.loadData(this);
+      if (data) {
+        PermissionConfigureComponent.loadData(this);
+      }
     }, (reason: any) => {
       console.log('reason :', reason);
     });
