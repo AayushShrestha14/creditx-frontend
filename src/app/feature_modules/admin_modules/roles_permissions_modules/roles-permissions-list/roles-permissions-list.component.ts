@@ -69,7 +69,7 @@ export class RolesPermissionsListComponent implements OnInit {
       this.countResponse.totalActive = response.detail.active;
       this.countResponse.totalInactive = response.detail.inactive;
       this.countResponse.totalRecords = response.detail.roles;
-    })
+    });
   }
 
   allRoleList() {

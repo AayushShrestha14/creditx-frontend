@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { GlobalCounter } from 'src/app/core/common/models/global-counter.model';
 import { ObjectUtil } from 'src/app/core/utils/ObjectUtil';
 import { AddRoleComponent } from '../add-role/add-role.component';
 import { ActiveRoles } from '../models/active-roles.model';
@@ -35,11 +36,7 @@ export class PermissionConfigureComponent implements OnInit {
 
   submitted: boolean = false;
 
-  countResponse: any = {
-    totalRecords: 0,
-    totalActive: 0,
-    totalInactive: 0
-  }
+  countResponse: GlobalCounter = new GlobalCounter();
 
   static loadData(other: PermissionConfigureComponent) {
     other.rolesService.allActiveDataList().subscribe({
@@ -63,11 +60,14 @@ export class PermissionConfigureComponent implements OnInit {
 
   ngOnInit() {
     PermissionConfigureComponent.loadData(this);
+    this.countResponseDetails();
+  }
 
-    this.rolesService.getStatus().subscribe((response:any) => {
-      this.countResponse.totalRecords = response.detail.roles;
+  countResponseDetails() {
+    this.rolesService.getStatus().subscribe((response: any)=> {
       this.countResponse.totalActive = response.detail.active;
       this.countResponse.totalInactive = response.detail.inactive;
+      this.countResponse.totalRecords = response.detail.roles;
     })
   }
 
@@ -77,11 +77,10 @@ export class PermissionConfigureComponent implements OnInit {
     };
     const addNewRole = this.ngbModal.open(AddRoleComponent, options);
     addNewRole.result.then((data: any) => {
-      console.log('data :', data);
-      PermissionConfigureComponent.loadData(this);
-    }, (reason: any) => {
-      console.log('reason :', reason);
-    });
+      if (data) {
+        PermissionConfigureComponent.loadData(this);
+      }
+    }, (reason: any) => {});
   }
 
   onSelectNewRole(event: any) {

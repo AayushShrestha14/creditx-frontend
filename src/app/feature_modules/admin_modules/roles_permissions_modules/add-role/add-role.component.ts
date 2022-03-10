@@ -22,7 +22,7 @@ export class AddRoleComponent implements OnInit {
 
   signApprovalSheetStatus: boolean = false;
 
-  hideBranchAccess: boolean = false;
+  hideRoleAccess: boolean = false;
 
   authorityRequired: boolean = false;
 
@@ -32,7 +32,7 @@ export class AddRoleComponent implements OnInit {
 
   appConfigRoleType: Array<RoleTypeEnum> = new Array<RoleTypeEnum>();
 
-  roleAccessList = RoleTypeEnum.enumObject();
+  roleAccessList = RoleAccessEnum.enumObject();
 
   addRoleForm: FormGroup = new FormGroup({});
 
@@ -46,17 +46,17 @@ export class AddRoleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllRoleTypes();
     this.initForm();
+    this.getAllRoleTypes();
   }
 
   initForm(): void {
     this.addRoleForm = this.formBuilder.group({
-      roleName: [undefined, Validators.compose([Validators.required])],
-      roleType: [undefined, Validators.compose([Validators.required])],
-      roleAccess: [undefined, Validators.compose([Validators.required])],
-      signApprovalSheet: [false, Validators.compose([Validators.required])],
-      authorityLabel: [undefined, Validators.compose([Validators.required])]
+      roleName: [undefined, Validators.compose([])],
+      roleType: [undefined, Validators.compose([])],
+      roleAccess: [undefined, Validators.compose([])],
+      signApprovalSheet: [false, Validators.compose([])],
+      authorityLabel: [undefined, Validators.compose([])]
     });
   }
 
@@ -85,7 +85,7 @@ export class AddRoleComponent implements OnInit {
       this.forms['roleType'].value === RoleTypeEnum.ADMIN ||
       this.forms['roleType'].value === RoleTypeEnum.CAD_SUPERVISOR
     ) {
-      this.hideBranchAccess = true;
+      this.hideRoleAccess = true;
       this.authorityRequired = true;
       this.showAuthority = true;
       this.role.roleAccess = RoleAccessEnum.OWN;
@@ -101,7 +101,7 @@ export class AddRoleComponent implements OnInit {
         this.showAuthority = false;
       }
     } else {
-      this.hideBranchAccess = false;
+      this.hideRoleAccess = false;
       this.authorityRequired = true;
       this.showAuthority = true;
       this.role.roleAccess = RoleAccessEnum.OWN;
