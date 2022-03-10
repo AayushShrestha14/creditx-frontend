@@ -39,11 +39,11 @@ export class LoanConfigurationListComponent implements OnInit {
       header: 'Nature of Loan',
     },
     {
-      primaryKey: 'financeAssets',
+      primaryKey: 'financedAssets',
       header: 'Nature of Finance Assets',
     },
     {
-      primaryKey: 'loanCategories',
+      primaryKey: 'loanCategory',
       header: 'Categories',
     },
     {

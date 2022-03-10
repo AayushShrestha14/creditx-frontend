@@ -19,7 +19,6 @@ import { ValuatorHeaderActionComponent } from './vauator_modules/action-componen
 import { LoanConfigurationListComponent } from './loan-configuration_modules/loan-configuration-list/loan-configuration-list.component';
 import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuator.component';
 
-
 @NgModule({
   declarations: [
     BranchComponent,
