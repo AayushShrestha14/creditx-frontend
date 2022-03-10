@@ -23,7 +23,6 @@ import { PermissionConfigureComponent } from "./roles_permissions_modules/permis
 import { UserEditComponent } from './users_modules/user-edit/user-edit.component';
 import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuator.component';
 
-
 @NgModule({
   declarations: [
     BranchComponent,

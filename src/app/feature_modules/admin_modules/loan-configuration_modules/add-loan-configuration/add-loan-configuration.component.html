@@ -12,15 +12,15 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="sb_label">Loan Scheme</label>
-              <input type="text" class="form-control" formControlName="name" required placeholder="Loan Scheme">
+              <input type="text" class="form-control" formControlName="name" placeholder="Loan Scheme">
             </div>
           </div>
           <div class="col-md-6 row">
             <div class="col-md-12 form-group">
               <label class="sb_label">Loan Type</label>
               <div class="row ml-2">
-                <nb-radio-group class="col-md-12 d-contents form-control"
-                                formControlName="fundable">
+                <nb-radio-group class="col-md-12 d-contents form-control" id="fundable" name="isFundable"
+                                formControlName="isFundable">
                   <nb-radio class="form-group" [value]=true>Fundable
                   </nb-radio>
                   <nb-radio class="form-group" [value]=false>Non-Fundable
@@ -33,10 +33,11 @@
             <div class="col-md-9 form-group">
               <label class="sb_label">Nature of Loan</label>
               <div class="row ml-2">
-                <nb-radio-group formControlName="loanNature" class="d-inline-flex">
-                  <nb-radio>
-                    <!--                    [value]="option.value">-->
-                    <!--                    {{ option.value }}-->
+                <nb-radio-group formControlName="loanNature" name="loanNature" id="loanNature" class="d-inline-flex">
+                  <nb-radio
+                    *ngFor="let option of loanNature;"
+                    [value]="option.value">
+                    {{ option.value }}
                   </nb-radio>
                 </nb-radio-group>
               </div>
@@ -46,12 +47,11 @@
             <div class="col-md-9 form-group">
               <label class="sb_label">Nature of Assets financed</label>
               <div class="row ml-2">
-                <nb-radio-group formControlName="financedAssets" class="d-inline-flex">
-                  <!--                                [(ngModel)]="loanConfig.financedAssets"-->
-                  <nb-radio>
-                    <!--                    *ngFor="let option of financedAssets"-->
-                    <!--                    [value]="option.value">-->
-                    <!--                    {{ option.value }}-->
+                <nb-radio-group formControlName="financedAssets" id="financedAssets"
+                                name="financedAssets" class="d-inline-flex">
+                  <nb-radio *ngFor="let option of financedAssets;"
+                    [value]="option.value">
+                    {{ option.value }}
                   </nb-radio>
                 </nb-radio-group>
               </div>
@@ -60,16 +60,14 @@
           <div class="col-md-4">
             <div class="form-group>">
               <label class="sb_label">Collateral Requirement (In %)</label>
-              <input type="text" class="form-control" formControlName="collateralrequirement" required
+              <input type="text" class="form-control" formControlName="collateralRequirement"
                      placeholder="e.g. 13">
-              <!--                     [(ngModel)]="loanConfig.collateralRequirement" #collateralRequirement="ngModel"-->
-              <!--                     [ngClass]="{ 'is-invalid': loanConfigForm.submitted && collateralRequirement.invalid }">-->
               <div class="invalid-feedback">
                 <!--                   *ngIf="loanConfigForm.submitted && collateralRequirement.invalid">-->
                 <!--                <div *ngIf="collateralRequirement.errors.required"></div>-->
                 <!--                <div *ngIf="collateralRequirement.invalid && loanConfig.collateralRequirement !== undefined &&loanConfig.collateralRequirement !== null">-->
                 <div>
-                  Collateral Requirement is required!
+                  Collateral Requirement is !
                 </div>
               </div>
             </div>
@@ -77,7 +75,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <label class="sb_label">Loan Short Name</label>
-              <input type="text" class="form-control" formControlName="shortNames" required
+              <input type="text" class="form-control" formControlName="shortNames"
                      placeholder="e.g. WCL for Working capital Loan">
               <!--              <div class="invalid-feedback" *ngIf="loanConfigForm.submitted && shortNames.invalid">-->
               <!--                <div *ngIf="shortNames.errors.required"></div>-->
@@ -91,14 +89,9 @@
           <div class="col-md-4">
             <div class="form-group">
               <label class="sb_label">Category</label>
-              <ng-select class="form-selection" placeholder="Select category">
-                <!--                #category="ngModel" [items]="loanCategories"-->
-                <!--                         [multiple]="false"-->
-                <!--                         bindValue="value"-->
-                <!--                         bindLabel="key"-->
-                <!--                         [(ngModel)]="selectedLoanCategory"-->
-                <!--                         name="category"-->
-
+              <ng-select class="form-selection" formControlName="loanCategory" placeholder="Select category">
+                <ng-option *ngFor="let category of categoryEnum"
+                           [value]="category?.value">{{category?.value}}</ng-option>
               </ng-select>
               <div>
                 <!--                *ngIf="loanConfigForm.submitted && !selectedLoanCategory">-->
@@ -108,7 +101,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <label class="sb_label">Interest Rate</label>
-              <input type="number"  class="form-control" formControlName="interestRate"
+              <input type="number" class="form-control" formControlName="interestRate"
                      placeholder="Interest rate">
               <!--              <div *ngIf="loanConfigForm.submitted && interestRate.invalid" class="invalid-feedback">-->
 
@@ -117,14 +110,10 @@
           <div class="col-md-4">
             <div class="form-group">
               <label class="sb_label">Loan Tag</label>
-              <ng-select class="form-selection"
-                placeholder="Select Loan tag">
-                <!--                #loanTag="ngModel" [items]="loanTagList"-->
-                <!--                bindLabel="value"-->
-                <!--                bindValue="key" name="loanTag"-->
-                <!--                [required]="true"-->
-                <!--                [(ngModel)]="selectedLoanTag"-->
-                <!--                (change)="onLoanTagChange()"-->
+              <ng-select class="form-selection" formControlName="loanTag"
+                         placeholder="Select Loan tag">
+                <ng-option *ngFor="let loanTag of LoanTagEnum"
+                           [value]="loanTag?.value">{{loanTag?.value?.replace('_', ' ')}}</ng-option>
               </ng-select>
               <!--              <div *ngIf="loanConfigForm.submitted && loanTag.invalid">-->
             </div>
@@ -134,7 +123,8 @@
           <div class="col-md-6">
             <label class="sb_label">Renewable</label><br>
             <div class="row ml-2">
-              <nb-radio-group class="col-md-12 d-contents d-inline-flex" formControlName="renewable">
+              <nb-radio-group class="col-md-12 d-contents d-inline-flex" formControlName="isRenewable"
+                              id="isRenewable" name="isRenewable">
                 <nb-radio class="form-group" [value]="true">Renewable
                 </nb-radio>
                 <nb-radio class="form-group" [value]="false">Non-Renewable
@@ -142,14 +132,13 @@
               </nb-radio-group>
             </div>
           </div>
-          <!--          <div *ngIf="productUtils.OFFER_LETTER && !(productUtils.CAD_LITE_VERSION) && !(productUtils.FULL_CAD)"-->
-          <!--               class="col-md-6"> -->
-          <div
-            class="col-md-6">
+          <div *ngIf="productUtil.OFFER_LETTER && !(productUtil.CAD_LITE_VERSION) && !(productUtil.FULL_CAD)"
+               class="col-md-6">
             <div class="form-group">
               <label class="sb_label">Post Approval Document</label>
-              <ng-select class="form-selection" placeholder="Select Post Approval Document...">
-                <ng-option>LOAN FILE</ng-option>
+              <ng-select class="form-selection" [multiple]="true" formControlName="offerLetters" placeholder="Select Post Approval Document...">
+                <ng-option value="Loan File">LOAN FILE</ng-option>
+                <ng-option value="Loan Files">LOAN FILES</ng-option>
               </ng-select>
             </div>
           </div>
@@ -157,7 +146,7 @@
         <div class="row form-group">
           <div class="col-md-6">
             <label class="sb_label">Minimum Proposal Amount</label>
-            <input type="number" class="form-control" formControlName="minimumProposedAmount" required
+            <input type="number" class="form-control" formControlName="minimumProposedAmount"
                    pattern="^\d*[.]?\d*$" min="0"
                    placeholder="Minimum Proposal Amount">
             <!--                   [(ngModel)]="loanConfig.minimumProposedAmount"-->
@@ -166,6 +155,14 @@
             <!--            <div class="invalid-feedback" *ngIf="loanConfigForm.submitted && minimumProposalAmount.invalid">-->
             <!--              <div *ngIf="minimumProposalAmount.errors.required">Minimum Proposed Amount is required</div>-->
             <!--              <div *ngIf="minimumProposalAmount.invalid && loanConfig.minimumProposedAmount !== undefined &&loanConfig.minimumProposedAmount !== null">-->
+          </div>
+          <div class="col-md-6">
+            <label class="sb_label">Security Type</label>
+            <ng-select formControlName="securityType"
+                       placeholder="Select Security Type..." class="form-selection">
+              <ng-option *ngFor="let security of securityTypeEnum"
+                         [value]="security?.value">{{security?.value}}</ng-option>
+            </ng-select>
           </div>
         </div>
         <br>
@@ -179,12 +176,13 @@
                   <!--                                    <span (click)="nbUpdateCheckBoxInitial($event, true)"-->
                   <!--                                          class="btn btn-primary btn-sm">Select All-->
                   <!--                                    </span>-->
-                  <button class="btn sb_button_primary action_buttons"> Select All </button>
+                  <button class="btn sb_button_primary action_buttons"> Select All</button>
                   <!--                  <span (click)="nbUpdateCheckBoxInitial($event, false)"-->
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span>-->
-                  <button class="btn sb_button_primary action_buttons">Unselect All
-                                    </button><br><br>
+                  <button class="btn sb_button_primary action_buttons"> Unselect All
+                  </button>
+                  <br><br>
                   <div class="row">
                     <div class="col-md-4">
                       <!--                         *ngFor="let initialDocument of initialDocumentList; let documentIndex = index">-->
@@ -212,12 +210,13 @@
                   <!--                                          class="btn btn-primary btn-sm">Select All-->
                   <!--                                    </span>-->
                   <button class="btn sb_button_primary action_buttons">Select All
-                                    </button>
+                  </button>
                   <!--                  <span (click)="nbUpdateCheckBoxRenewal($event, false)"-->
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span>-->
                   <button class="btn sb_button_primary action_buttons">Unselect All
-                  </button><br><br>
+                  </button>
+                  <br><br>
 
                   <div class="row">
                     <div class="col-md-4">
@@ -244,13 +243,14 @@
                   <!--                                          class="btn btn-primary btn-sm">Select All-->
                   <!--                                    </span>-->
                   <button class="btn sb_button_primary action_buttons">Select All
-                                    </button>
+                  </button>
                   <!--                  <span (click)="nbUpdateCheckBoxClosure($event,false)"-->
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span>-->
                   <button
                     class="btn sb_button_primary action_buttons">Unselect All
-                                    </button><br><br>
+                  </button>
+                  <br><br>
                   <div class="row">
                     <div class="col-md-4">
                       <!--                         *ngFor="let closureDocument of closureDocumentList; let documentIndex = index">-->
@@ -276,12 +276,13 @@
                   <!--                                          class="btn btn-primary btn-sm">Select All-->
                   <!--                                    </span>  -->
                   <button class="btn sb_button_primary action_buttons">Select All
-                                    </button>
+                  </button>
                   <!--                  <span (click)="nbUpdateCheckBoxEligibility($event,false)"-->
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span>-->
                   <button class="btn sb_button_primary action_buttons">Unselect All
-                                    </button><br><br>
+                  </button>
+                  <br><br>
                   <div class="row">
                     <div class="col-md-4">
 
@@ -309,13 +310,14 @@
                   <!--                                          class="btn btn-primary btn-sm">Select All-->
                   <!--                                    </span>-->
                   <button class="btn sb_button_primary action_buttons">Select All
-                                    </button>
+                  </button>
                   <!--                  <span (click)="nbUpdateCheckBoxEnhance($event,false)"-->
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span>-->
                   <button
                     class="btn sb_button_primary action_buttons">Unselect All
-                                    </button><br><br>
+                  </button>
+                  <br><br>
                   <div class="row">
                     <div class="col-md-4">
 
@@ -348,7 +350,8 @@
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span> -->
                   <button class="btn sb_button_primary action_buttons">Unselect All
-                  </button> <br><br>
+                  </button>
+                  <br><br>
                   <div class="row">
                     <div class="col-md-4">
 
@@ -381,7 +384,8 @@
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span>-->
                   <button class="btn sb_button_primary action_buttons">Unselect All
-                  </button><br><br>
+                  </button>
+                  <br><br>
                   <div class="row">
                     <div class="col-md-4">
 
@@ -415,7 +419,8 @@
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span>-->
                   <button class="btn sb_button_primary action_buttons">Unselect All
-                  </button><br><br>
+                  </button>
+                  <br><br>
                   <div class="row">
                     <div class="col-md-4">
 
@@ -447,7 +452,8 @@
                   <!--                        class="ml-1 btn btn-primary btn-sm">Unselect All-->
                   <!--                                    </span>-->
                   <button class="btn sb_button_primary action_buttons">Unselect All
-                  </button><br><br>
+                  </button>
+                  <br><br>
                   <div class="row">
                     <div class="col-md-4">
                       <!--                      *ngFor="let renewWithEnhancementDocument of renewWithEnhancementDocumentList; let documentIndex = index"-->
@@ -470,7 +476,7 @@
       <nb-card-footer>
         <div class="row">
           <div class="col-sm-12">
-            <button type="button" class="btn sb_button_primary cursor float-end"
+            <button type="submit" (click)="onSubmit()" class="btn sb_button_primary cursor float-end"
                     title="Save">Save
             </button>
             <!--(click)="onSubmit()"-->
