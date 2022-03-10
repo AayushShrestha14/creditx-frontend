@@ -23,6 +23,8 @@ import { ValuatorHeaderActionComponent } from './vauator_modules/action-componen
 import { LoanConfigurationListComponent } from './loan-configuration_modules/loan-configuration-list/loan-configuration-list.component';
 import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuator.component';
 
+import {ApprovalLimitComponent} from "./loan_approval_modules/approvallimit/approval-limit.component";
+import {ApprovalLimitFormComponent} from "./loan_approval_modules/approvallimit/approval-limit-form/approval-limit-form.component";
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuato
     ValuatorListComponent,
     TableActionComponent,
     ValuatorHeaderActionComponent,
-    AddValuatorComponent
+    AddValuatorComponent,
+    ApprovalLimitComponent,
+    ApprovalLimitFormComponent,
   ],
   imports: [
     CommonModule,

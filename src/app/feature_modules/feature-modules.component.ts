@@ -48,9 +48,13 @@ export class FeatureModulesComponent implements OnInit {
       link: '/home/admin_modules/document',
       icon: 'book-outline'
     };
+    const approvalLimit = {
+      title: 'Approval Limit',
+      link: '/home/admin_modules/approval_limit',
+      icon: 'plus-circle-outline'
+    };
 
-
-    this.menus.push(dashboard, customer, branch, rolesAndPermissions, document);
+    this.menus.push(dashboard, customer, branch, rolesAndPermissions, document, approvalLimit);
     this.menus.push(dashboard, customer, branch, valuator, rolesAndPermissions,loanConfiguration);
   }
 

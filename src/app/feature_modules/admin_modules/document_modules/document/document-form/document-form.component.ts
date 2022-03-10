@@ -15,7 +15,7 @@ import {ObjectUtil} from "../../../../../core/utils/ObjectUtil";
 })
 export class DocumentFormComponent implements OnInit {
 
-  @Input() model: Document | undefined;
+  @Input() model?: Document;
   @Input() action: Action = Action.ADD;
 
   modelForm : FormGroup = new FormGroup({});

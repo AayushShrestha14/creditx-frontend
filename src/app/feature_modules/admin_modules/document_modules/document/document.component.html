@@ -63,9 +63,9 @@
             <th>Action</th>
           </tr>
           </thead>
-         <!-- <tbody>
+          <tbody>
           <tr *ngFor="let allList of dataList;let i=index">
-            <div *ngIf="!(dataList?.length > 0)">
+            <div *ngIf="!(dataList!.length > 0)">
               <p>No Content Found</p>
             </div>
             <td>{{(pageable.number - 1) * pageable.size + i + 1}}</td>
@@ -86,7 +86,7 @@
               </button>
             </td>
           </tr>
-          </tbody>-->
+          </tbody>
         </table>
         <app-paging></app-paging>
       </nb-card-body>
