@@ -22,7 +22,7 @@
                     placeholder="Role Name"
                     name="roleName"
                     formControlName="roleName"
-                    required
+                    
                     id="roleName"
                     />
                 </div>
@@ -30,7 +30,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label class="sb_label">Role Type:</label>
-                    <ng-select (ngModelChange)="checkRole()" formControlName="roleType" class="form-selection" notFoundText="No role type found"  placeholder="Select Role Type . . ." required>
+                    <ng-select (ngModelChange)="checkRole()" formControlName="roleType" class="form-selection" notFoundText="No role type found"  placeholder="Select Role Type . . ." >
                         <ng-option [value]="type" *ngFor="let type of appConfigRoleType">{{type |  replace:'_':' '}}</ng-option>
                     </ng-select>
                 </div>
@@ -39,7 +39,7 @@
             <div class="col-sm-6" *ngIf="!hideRoleAccess">
                 <div class="form-group">
                     <label class="sb_label">Role Access:</label>
-                    <ng-select formControlName="roleAccess" class="form-selection" notFoundText="No data found"  placeholder="Select Branch . . ." required>
+                    <ng-select formControlName="roleAccess" class="form-selection" notFoundText="No data found"  placeholder="Select Branch . . ." >
                         <ng-option [value]="roleAccess?.key" *ngFor="let roleAccess of roleAccessList">{{roleAccess?.value}}</ng-option>
                     </ng-select>
                 </div>
@@ -53,7 +53,6 @@
                     placeholder="e.g. Created By, Supported By"
                     name="authorityLabel"
                     formControlName="authorityLabel"
-                    required
                     id="authorityLabel"
                     />
                 </div>
