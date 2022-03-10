@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {LoanConfigurationService} from "../services/loan-configuration.service";
+import {LoanConfigurationResponse} from "../models/loan-configuration-response-model";
+import {ProductUtils} from "../../../../core/common/utils/product-mode.model";
 
 @Component({
   selector: 'app-add-loan-configuration',
@@ -8,9 +11,38 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class AddLoanConfigurationComponent implements OnInit {
 
+  @Input() model : LoanConfigurationResponse = new LoanConfigurationResponse();
   loanConfigForm: FormGroup = new FormGroup({});
+  productUtil: ProductUtils = new ProductUtils();
+
+  securityTypeEnum = [
+    {value : 'Land'},
+    {value : 'Vehicle'},
+    {value : 'Land & Building'}
+  ];
+  categoryEnum = [
+    {value : 'INDIVIDUAL'},
+    {value : 'INSTITUTION'}
+  ];
+  LoanTagEnum = [
+    {value : 'GENERAL'},
+    {value : 'VEHICLE'},
+    {value : 'FIXED_DEPOSIT'},
+    {value : 'SHARE_SECURITY'},
+    {value : 'MICRO_LOAN'}
+  ];
+  financedAssets = [
+    {value : 'FixedAssets'},
+    {value : 'WorkingCapital'}
+  ];
+  loanNature = [
+    {value : 'Revolving'},
+    {value : 'Terminating'}
+  ];
+
   constructor(
     private formBuilder: FormBuilder,
+    private service: LoanConfigurationService,
   ) { }
   ngOnInit(): void {
     this.buildForm();
@@ -20,19 +52,30 @@ export class AddLoanConfigurationComponent implements OnInit {
   buildForm() {
     this.loanConfigForm = this.formBuilder.group({
       name: [undefined],
-      fundable : [undefined],
+      isFundable : [undefined],
       loanNature: [undefined],
       financedAssets: [undefined],
-      collateralrequirement: [undefined],
+      collateralRequirement: [undefined],
       shortNames: [undefined],
       category: [undefined],
       interestRate: [undefined],
       loanTag: [undefined],
-      renewable: [undefined],
+      loanCategory: [undefined],
+      isRenewable: [undefined],
       offerLetters: [undefined],
       minimumProposedAMount: [undefined],
+      securityType: [undefined],
     })
 
+  }
+
+  onSubmit() {
+    this.service.save(this.loanConfigForm.value as LoanConfigurationResponse).subscribe(() => {
+      this.model = new LoanConfigurationResponse();
+      this.loanConfigForm.reset();
+    }, error => {
+      console.log(error);
+    });
   }
 }
 

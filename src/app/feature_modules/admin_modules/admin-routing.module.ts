@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { BranchComponent } from './branch_modules/branch/branch.component';
 import { PermissionConfigureComponent } from './roles_permissions_modules/permission-configure/permission-configure.component';
 import { RolesPermissionsListComponent } from './roles_permissions_modules/roles-permissions-list/roles-permissions-list.component';
-import { DocumentComponent} from "./document_modules/document/document.component";
 import {ValuatorListComponent} from "./vauator_modules/valuator-list/valuator-list.component";
 import {LoanConfigurationListComponent} from "./loan-configuration_modules/loan-configuration-list/loan-configuration-list.component";
 import {AddLoanConfigurationComponent} from "./loan-configuration_modules/add-loan-configuration/add-loan-configuration.component";
 import {AddValuatorComponent} from "./vauator_modules/add-valuator/add-valuator.component";
+import {UserComponent} from './users_modules/user-list/user.component';
+import { DocumentComponent} from "./document_modules/document/document.component";
 import {ApprovalLimitComponent} from "./loan_approval_modules/approvallimit/approval-limit.component";
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
         component: RolesPermissionsListComponent,
       }
     ]
+  },
+  {
+    path: 'users',
+    component: UserComponent
   },
   {
     path: 'valuator',

@@ -1,0 +1,109 @@
+<div class="modal-content">
+  <div class="sb_header modal-header">
+    <p class="modal-title pull-left text-white">Add New Role</p>
+    <a
+      (click)="onCloseModal()"
+      aria-label="Close"
+      class="close cursor text-white"
+      data-dismiss="modal"
+    >
+      <span aria-hidden="true">&times;</span>
+    </a>
+  </div>
+  <form role="form" class="form-details" [formGroup]="addRoleForm" name="form-details">
+    <div class="modal-body">
+        <div class="row form_data_row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="sb_label">Role Name:</label>
+                    <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    placeholder="Role Name"
+                    name="roleName"
+                    formControlName="roleName"
+                    
+                    id="roleName"
+                    [ngClass]="{ 'is-invalid': submitted && forms['roleName'].errors }"
+                    />
+                  <span *ngIf="submitted || forms['roleName'].touched || forms['roleName'].dirty && forms['roleName'].invalid"
+                    class="info-msg text-danger">
+                      <small *ngIf="forms['roleName'].errors && forms['roleName'].errors?.['required']">Role Name is required.</small>
+                  </span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="sb_label">Role Type:</label>
+                    <ng-select (ngModelChange)="checkRole()" formControlName="roleType" class="form-selection" notFoundText="No role type found"  placeholder="Select Role Type . . ." >
+                        <ng-option [value]="type" *ngFor="let type of appConfigRoleType">{{type |  replace:'_':' '}}</ng-option>
+                    </ng-select>
+<!--                  <span *ngIf="submitted || forms['roleType'].touched || forms['roleType'].dirty && forms['roleType'].invalid"-->
+<!--                        class="info-msg text-danger">-->
+<!--                      <small *ngIf="forms['roleType'].errors && forms['roleType'].errors?.['required']">Role Type is required.</small>-->
+<!--                  </span>-->
+                </div>
+            </div>
+
+            <div class="col-sm-6" *ngIf="!hideRoleAccess">
+                <div class="form-group">
+                    <label class="sb_label">Role Access:</label>
+                    <ng-select formControlName="roleAccess" class="form-selection" notFoundText="No data found"  placeholder="Select Branch . . ." >
+                        <ng-option [value]="roleAccess?.key" *ngFor="let roleAccess of roleAccessList">{{roleAccess?.value}}</ng-option>
+                    </ng-select>
+                  <span *ngIf="submitted || forms['roleAccess'].touched || forms['roleAccess'].dirty && forms['roleAccess'].invalid"
+                        class="info-msg text-danger">
+                      <small *ngIf="forms['roleAccess'].errors && forms['roleAccess'].errors?.['required']">Role Access is required.</small>
+                  </span>
+                </div>
+            </div>
+            <div class="col-sm-6" *ngIf="showAuthority">
+                <div class="form-group">
+                    <label class="sb_label">Authority Label:</label>
+                    <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    placeholder="e.g. Created By, Supported By"
+                    name="authorityLabel"
+                    formControlName="authorityLabel"
+                    id="authorityLabel"
+                    />
+                  <span *ngIf="submitted || forms['authorityLabel'].touched || forms['authorityLabel'].dirty && forms['authorityLabel'].invalid"
+                        class="info-msg text-danger">
+                      <small *ngIf="forms['authorityLabel'].errors && forms['authorityLabel'].errors?.['required']">Authority Label is required.</small>
+                  </span>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="showCheck">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <nb-checkbox (change)="signApprovalSheet($event)" formControlName="signApprovalSheet" class="d-inline-flex">
+                        <label class="sb_label">Sign Approval Sheet</label>
+                    </nb-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="sb_label text-danger">Note<span>*</span>: New role will added in lowest order !</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+          <div class="col-sm-12">
+            <button (click)="onCloseModal()" class="btn sb_button_danger action_buttons"type="button">
+                Cancel
+            </button>
+            <button class="btn sb_button_primary action_buttons" [disabled]="submitted" (click)="onAddNewRole()" type="button">
+                <span *ngIf="submitted" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Add
+            </button>
+          </div>
+      </div>
+    </div>
+  </form>
+</div>

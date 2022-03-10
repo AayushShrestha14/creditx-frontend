@@ -9,6 +9,7 @@ import { DocumentComponent } from './document_modules/document/document.componen
 import { UpdateDocumentComponent } from './document_modules/document/update-document/update-document.component';
 import { CommonResourceModule } from 'src/app/common_resource_modules/common-resource.module';
 import { HeaderActionComponent } from './roles_permissions_modules/action-component/header-action/header-action.component';
+import {LoanConfigurationListComponent} from "./loan-configuration_modules/loan-configuration-list/loan-configuration-list.component";
 import { LoanConfigurationActionComponent } from './loan-configuration_modules/action-component/loan-configuration-action.component';
 import { LoanConfigurationHeaderActionComponent } from './loan-configuration_modules/action-component/loan-configuration-header-action/loan-configuration-header-action.component';
 import { AddLoanConfigurationComponent } from './loan-configuration_modules/add-loan-configuration/add-loan-configuration.component';
@@ -20,7 +21,10 @@ import { PermissionConfigureComponent } from './roles_permissions_modules/permis
 import { ValuatorListComponent } from './vauator_modules/valuator-list/valuator-list.component';
 import { TableActionComponent } from './vauator_modules/action-component/table-action/table-action.component';
 import { ValuatorHeaderActionComponent } from './vauator_modules/action-component/header-action/header-action.component';
-import { LoanConfigurationListComponent } from './loan-configuration_modules/loan-configuration-list/loan-configuration-list.component';
+import { AddRoleComponent } from './roles_permissions_modules/add-role/add-role.component';
+import { UserComponent} from "./users_modules/user-list/user.component";
+import { UserFormComponent } from './users_modules/user-form/user-form.component';
+import { UserEditComponent } from './users_modules/user-edit/user-edit.component';
 import { AddValuatorComponent } from './vauator_modules/add-valuator/add-valuator.component';
 
 import {ApprovalLimitComponent} from "./loan_approval_modules/approvallimit/approval-limit.component";
@@ -35,18 +39,23 @@ import {ApprovalLimitFormComponent} from "./loan_approval_modules/approvallimit/
     UpdateDocumentComponent,
     RolesPermissionsListComponent,
     RolesActionComponent,
-    HeaderActionComponent,
-    PermissionConfigureComponent,
+    UserComponent,
     LoanConfigurationListComponent,
     LoanConfigurationActionComponent,
     LoanConfigurationHeaderActionComponent,
     AddLoanConfigurationComponent,
+    HeaderActionComponent,
     ValuatorListComponent,
     TableActionComponent,
     ValuatorHeaderActionComponent,
     AddValuatorComponent,
     ApprovalLimitComponent,
     ApprovalLimitFormComponent,
+    AddRoleComponent,
+    UserFormComponent,
+    PermissionConfigureComponent,
+    UserEditComponent,
+    AddValuatorComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +67,7 @@ import {ApprovalLimitFormComponent} from "./loan_approval_modules/approvallimit/
     RolesActionComponent,
     HeaderActionComponent,
     TableActionComponent,
-    ValuatorHeaderActionComponent
+    ValuatorHeaderActionComponent,
   ]
 })
-export class AdminModule {}
+export class AdminModule { }

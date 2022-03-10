@@ -5,6 +5,7 @@ import {Pageable} from "../../../../core/common/services/common-pageable";
 import {TableColumnSetting} from "../../../../common_resource_modules/models/table-column-setting.model";
 import {ValuatorResponse} from "../models/valuator-response.model";
 import {ValuatorService} from "../services/valuator.service";
+import {PaginationUtils} from "../../../../core/utils/PaginationUtils";
 
 @Component({
   selector: 'app-valuator-list',
@@ -50,7 +51,7 @@ export class ValuatorListComponent implements OnInit {
       header: 'Branches',
     },
     {
-      primaryKey: 'valuatingField',
+      primaryKey: 'valuatingFields',
       header: 'Valuating Type',
     },
     {
@@ -72,6 +73,14 @@ export class ValuatorListComponent implements OnInit {
   ]
 
   valuatorResponse: Array<ValuatorResponse> = new Array<ValuatorResponse>();
+  search = {
+    name: undefined,
+    branchIds: undefined,
+    status: undefined,
+    valuatingField: undefined,
+    minAmount: undefined,
+    maxAmount: undefined
+  };
   constructor(
     private valuatorService: ValuatorService
   ) { }
@@ -87,7 +96,16 @@ export class ValuatorListComponent implements OnInit {
   }
 
   allValuatorList() {
-    console.log('No data found!!!')
+    this.valuatorService.getPaginationWithSearchObject(this.search, this.page, 10).subscribe({
+      next: (response) => {
+        this.valuatorResponse = response.detail.content;
+        this.pageable = PaginationUtils.getPageable(response.detail);
+        },
+      error: (error) => {
+        console.log('error', error)
+      },
+      complete: () => {}
+    })
   }
 
   changePage(page: number) {
