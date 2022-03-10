@@ -69,6 +69,7 @@ export class RequestInterceptor implements HttpInterceptor {
         LocalStorageUtil.setStorage(storage);
       }),
       catchError((err) => {
+        console.error("err", err);
           this.router.navigate(['/auth/login'], {
             queryParams: {redirectUrl: state.url},
           });
