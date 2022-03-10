@@ -124,9 +124,16 @@
       <div class="row form-group">
         <div class="col-md-6">
           <label class="sb_label">Valuating Type</label>
-          <ng-select formControlName="valuatingField"
-                     placeholder="Select Valuating Type..." class="form-selection">
-            <ng-option *ngFor="let valuatingType of valuatingFieldEnum" [value]="valuatingType?.value">{{valuatingType?.value}}</ng-option>
+          <ng-select
+                     formControlName="valuatingField"
+                     [addTag]="addCustomValuatingField"
+                     [multiple]="true"
+                     [(ngModel)]="valuatorFieldModel"
+                     placeholder="Select Valuating Field">
+            <ng-option *ngFor="let valuatingField of valuatingFieldEnum.values()"
+                       [value]="valuatingField">
+              {{valuatingField}}
+            </ng-option>
           </ng-select>
           <!--<div *ngIf="valuatorFormControl.valuatingField.invalid && submitted" class="invalid-feedback">
             Valuating Type is required!
